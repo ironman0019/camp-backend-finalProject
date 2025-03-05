@@ -81,16 +81,16 @@
                     data-swiper-options="{ &quot;freeMode&quot;:true, &quot;spaceBetween&quot;:20, &quot;slidesPerView&quot;:&quot;auto&quot; }">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide w-auto h-100"><a class="footer-main-swiperLink" href="#"> <img
-                                    src="img/layouts/footer/badges/enamad.jpg" alt="" width="75" /></a>
+                                    src="{{ asset('assets/img/layouts/footer/badges/enamad.jpg') }}" alt="" width="75" /></a>
                         </div>
                         <div class="swiper-slide w-auto h-100"><a class="footer-main-swiperLink" href="#"> <img
-                                    src="img/layouts/footer/badges/kasbokar.jpg" alt="" width="75" /></a>
+                                    src="{{ asset('assets/img/layouts/footer/badges/kasbokar.jpg') }}" alt="" width="75" /></a>
                         </div>
                         <div class="swiper-slide w-auto h-100"><a class="footer-main-swiperLink" href="#"> <img
-                                    src="img/layouts/footer/badges/rezi.jpg" alt="" width="75" /></a>
+                                    src="{{ asset('assets/img/layouts/footer/badges/rezi.jpg') }}" alt="" width="75" /></a>
                         </div>
                         <div class="swiper-slide w-auto h-100"><a class="footer-main-swiperLink" href="#"> <img
-                                    src="img/layouts/footer/badges/rezi.jpg" alt="" width="75" /></a>
+                                    src="{{ asset('assets/img/layouts/footer/badges/rezi.jpg') }}" alt="" width="75" /></a>
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -104,14 +104,14 @@
             <!-- social -->
             <div class="col-12 col-lg-3 order-lg-last">
                 <nav class="nt-flex-center-center gap-4"><a href="#"> <img
-                            src="img/layouts/footer/social-media/instagram.png" alt=""
+                            src="{{ asset('assets/img/layouts/footer/social-media/instagram.png') }}" alt=""
                             width="40" /></a><a href="#"> <img
-                            src="img/layouts/footer/social-media/linkedin.png" alt="" width="40" /></a><a
-                        href="#"> <img src="img/layouts/footer/social-media/telegram.png" alt=""
-                            width="40" /></a><a href="#"> <img src="img/layouts/footer/social-media/x.png"
+                            src="{{ asset('assets/img/layouts/footer/social-media/linkedin.png') }}" alt="" width="40" /></a><a
+                        href="#"> <img src="{{ asset('assets/img/layouts/footer/social-media/telegram.png') }}" alt=""
+                            width="40" /></a><a href="#"> <img src="{{ asset('assets/img/layouts/footer/social-media/x.png') }}"
                             alt="" width="40" /></a><a href="#"> <img
-                            src="img/layouts/footer/social-media/whatsapp.png" alt="" width="40" /></a><a
-                        href="#"> <img src="img/layouts/footer/social-media/youtube.png" alt=""
+                            src="{{ asset('assets/img/layouts/footer/social-media/whatsapp.png') }}" alt="" width="40" /></a><a
+                        href="#"> <img src="{{ asset('assets/img/layouts/footer/social-media/youtube.png') }}" alt=""
                             width="40" /></a></nav>
             </div>
             <!-- copyright-->
