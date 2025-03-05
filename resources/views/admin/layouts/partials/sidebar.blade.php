@@ -16,11 +16,6 @@
 
 
             <a href="#" class="sidebar-link">
-                <i class="fas fa-object-ungroup"></i>
-                <span>برند ها</span>
-            </a>
-
-            <a href="#" class="sidebar-link">
                 <i class="fas fa-box"></i>
                 <span>محصولات</span>
             </a>
@@ -30,10 +25,6 @@
                 <span>تخفیفات</span>
             </a>
 
-            <a href="#" class="sidebar-link">
-                <i class="fas fa-motorcycle"></i>
-                <span>روش ارسال</span>
-            </a>
 
             <a href="#" class="sidebar-link">
                 <i class="fas fa-credit-card"></i>
@@ -54,20 +45,12 @@
 
             <section class="sidebar-part-title">بخش محتوی</section>
 
-            <a href="#" class="sidebar-link">
-                <i class="fas fa-blog"></i>
-                <span>بلاگ</span>
-            </a>
 
             <a href="#" class="sidebar-link">
                 <i class="fas fa-question"></i>
                 <span>سوالات متداول</span>
             </a>
 
-            <a href="#" class="sidebar-link">
-                <i class="fas fa-landmark"></i>
-                <span>صفحات</span>
-            </a>
 
             <a href="#" class="sidebar-link">
                 <i class="fas fa-comment"></i>
@@ -84,10 +67,6 @@
                 <span>بنر های اصلی</span>
             </a>
 
-            <a href="#" class="sidebar-link">
-                <i class="fas fa-bell"></i>
-                <span>بنر های تبلیغاتی</span>
-            </a>
 
             <section class="sidebar-group-link">
                 <section class="sidebar-dropdown-toggle">
