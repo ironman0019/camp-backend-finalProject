@@ -41,8 +41,8 @@
                     <td>#</td>
                     <td>#</td>
                     <td>#</td>
-                    <td>{{ \Morilog\Jalali\Jalalian::forge()->format('%A, %d %B %y') }}</td>
-                    <td>{{ \Morilog\Jalali\Jalalian::forge()->format('%A, %d %B %y') }}</td>
+                    <td>{{ \Morilog\Jalali\Jalalian::forge('')->format('%A, %d %B %y') }}</td>
+                    <td>{{ \Morilog\Jalali\Jalalian::forge('')->format('%A, %d %B %y') }}</td>
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="mx-2">

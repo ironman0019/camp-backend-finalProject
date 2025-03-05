@@ -42,7 +42,7 @@
                     <td>#</td>
                     <td>#</td>
                     <td>#</td>
-                    <td>{{ \Morilog\Jalali\Jalalian::forge()->format('%A, %d %B %y')  }}</td>
+                    <td>{{ \Morilog\Jalali\Jalalian::forge('')->format('%A, %d %B %y')  }}</td>
                 </tr>
                 
 
