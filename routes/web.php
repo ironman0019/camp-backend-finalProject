@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashbordController;
 use App\Http\Controllers\Home\HomeController;
@@ -29,7 +30,9 @@ Route::prefix('admin')->middleware([])->name('admin.')->group(function() {
     });
 
     Route::prefix('tickets')->name('tickets.')->group(function() {
-        //TODO
+        // TODO
+        // Ticket Category
+        Route::resource('ticket-category', TicketCategoryController::class);
 
     });
 
