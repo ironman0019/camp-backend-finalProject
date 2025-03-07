@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Ticket\StoreTicketCategoryRequest;
+use App\Http\Requests\Admin\Ticket\UpdateTicketCategoryRequest;
 use App\Models\Ticket\TicketCategory;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -27,16 +28,15 @@ class TicketCategoryController extends Controller
         return to_route('admin.tickets.ticket-category.index');
     }
 
-    public function show($id)
+    public function edit(TicketCategory $ticketCategory)
     {
+        return view('admin.ticket.ticket-category.edit', compact('ticketCategory'));
     }
 
-    public function edit($id)
+    public function update(UpdateTicketCategoryRequest $request, TicketCategory $ticketCategory): RedirectResponse
     {
-    }
-
-    public function update(Request $request, $id)
-    {
+        $ticketCategory->update($request->validated());
+        return to_route('admin.tickets.ticket-category.index');
     }
 
     public function destroy($id)

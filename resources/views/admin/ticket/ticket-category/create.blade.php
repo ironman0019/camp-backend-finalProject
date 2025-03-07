@@ -18,7 +18,7 @@
 
                 </div>
                 <div>
-                    <a href="#" class="btn btn-warning">بازگشت</a>
+                    <a href="{{ route('admin.tickets.ticket-category.index') }}" class="btn btn-warning">بازگشت</a>
                 </div>
             </section>
             <section class="body-content">
