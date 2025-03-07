@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Ticket\StoreTicketCategoryRequest;
 use App\Models\Ticket\TicketCategory;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class TicketCategoryController extends Controller
 {
@@ -16,10 +18,13 @@ class TicketCategoryController extends Controller
 
     public function create()
     {
+        return view('admin.ticket.ticket-category.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreTicketCategoryRequest $request): RedirectResponse
     {
+        TicketCategory::create($request->validated());
+        return to_route('admin.tickets.ticket-category.index');
     }
 
     public function show($id)
