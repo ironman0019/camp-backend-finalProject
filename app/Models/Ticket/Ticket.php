@@ -36,7 +36,8 @@ class Ticket extends Model
         ];
     }
 
-//    protected $cascadeDeletes = ['children'];
+    // Case cade on delete
+    protected array $cascadeDeletes = ['children'];
 
     // Relations
     public function user(): BelongsTo

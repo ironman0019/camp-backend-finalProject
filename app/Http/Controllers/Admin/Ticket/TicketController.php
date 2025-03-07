@@ -34,7 +34,9 @@ class TicketController extends Controller
     {
     }
 
-    public function destroy($id)
+    public function destroy(Ticket $ticket)
     {
+        $ticket->delete();
+        return to_route('admin.tickets.ticket.index');
     }
 }
