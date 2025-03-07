@@ -55,33 +55,28 @@
                                     </button>
                                 </form>
                             </div>
-                            {{-- if($ticket->parent_id != null)
-                                <div class="mx-2">
-                                    <a href="{{ route('admin.tickets.ticket.edit', $ticket) }}"
-                                        class="text-warning">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                </div>
-                            endif --}}
+
                             <div class="mx-2">
                                 <a href="{{ route('admin.tickets.ticket.show', $ticket) }}"
                                     class="text-primary">
                                     <i class="fa fa-eye"></i>
                                 </a>
                             </div>
-                            {{-- if($ticket->parent_id == null)
-                                <div class="mx-2">
-                                    <a href="{{ route('admin.tickets.ticket.status', $ticket) }}"
-                                        class="text-info">
-                                        <i class="fa {{ $ticket->status ? 'fa-toggle-off' : 'fa-toggle-on' }}"></i>
-                                    </a>
-                                </div>
-                            endif --}}
+
+                            <div class="mx-2">
+                                <a href="{{ route('admin.tickets.ticket.status', $ticket) }}"
+                                   class="text-warning">
+                                    <i @class(['fa ', \App\Enums\TicketStatusEnum::getBy($ticket->status->value)->getIcon()])></i>
+                                </a>
+                            </div>
+
                         </div>
                     </td>
-                    {{-- if($ticket->ticketFile)
-                        <td><a href="{{ $ticket->ticketFile->file_path }}">دانلود</a></td>
-                    endif --}}
+                    <td>
+                        @if($ticket->file)
+                            <a href="#"><i class="fa fa-download"></i></a>
+                        @endif
+                    </td>
                 </tr>
                 @empty @endforelse
 

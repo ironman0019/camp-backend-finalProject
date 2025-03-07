@@ -5,28 +5,24 @@ namespace App\Models\Ticket;
 use App\Enums\TicketStatusEnum;
 use App\Models\User;
 use Dyrynda\Database\Support\CascadeSoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ticket extends Model
 {
     use SoftDeletes, CascadeSoftDeletes;
 
-    protected $guarded = [
-        'id',
-        'reference_id',
-        'user_id',
-        'category_id',
-        'parent_id',
-        'subject',
-        'body',
-        'status',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
+    protected $fillable = ['reference_id',
+    'user_id',
+    'category_id',
+    'parent_id',
+    'subject',
+    'body',
+    'status',];
 
     // Casting
     protected function casts(): array
@@ -66,6 +62,17 @@ class Ticket extends Model
     public function children(): HasMany
     {
         return $this->hasMany(__CLASS__, 'parent_id');
+    }
+
+    public function file(): HasOne
+    {
+        return $this->hasOne(TicketFile::class);
+    }
+
+    // Scopes
+    public function scopeTicketParent(Builder $query): void
+    {
+        $query->where('parent_id', null);
     }
 
 

@@ -36,6 +36,7 @@ Route::prefix('admin')->middleware([])->name('admin.')->group(function() {
         Route::resource('ticket-category', TicketCategoryController::class);
         // Tickets
         Route::resource('ticket', TicketController::class);
+        Route::get('ticket/status/{ticket}', [TicketController::class, 'status'])->name('ticket.status');
 
     });
 

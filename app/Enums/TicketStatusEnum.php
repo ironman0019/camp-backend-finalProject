@@ -6,17 +6,23 @@ use Illuminate\Support\Arr;
 
 enum TicketStatusEnum: int
 {
-    case UNSEEN = 0;
-    case SEEN = 1;
-    case CLOSED = 2;
+    case OPEN = 0;
+    case CLOSED = 1;
 
     public function getLabel(): ?string
     {
         return match ($this) {
-            self::UNSEEN => 'مشاهده نشده',
-            self::SEEN => 'مشاهده شده',
+            self::OPEN => 'باز',
             self::CLOSED => 'بسته شده',
             default => 'نا معتبر',
+        };
+    }
+
+    public function getIcon(): ?string
+    {
+        return match ($this) {
+            self::OPEN => 'fa-times',
+            self::CLOSED => 'fa-check',
         };
     }
 
