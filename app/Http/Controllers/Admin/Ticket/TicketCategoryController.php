@@ -39,7 +39,9 @@ class TicketCategoryController extends Controller
         return to_route('admin.tickets.ticket-category.index');
     }
 
-    public function destroy($id)
+    public function destroy(TicketCategory $ticketCategory): RedirectResponse
     {
+        $ticketCategory->delete();
+        return to_route('admin.tickets.ticket-category.index');
     }
 }
