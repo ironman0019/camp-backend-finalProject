@@ -15,7 +15,7 @@
                 </p>
             </div>
             <div>
-                <a href="#" class="btn btn-success">ساخت</a>
+                <a href="{{ route('admin.tickets.ticket-category.create') }}" class="btn btn-success">ساخت</a>
             </div>
         </section>
         <section class="body-content">
@@ -28,16 +28,16 @@
                     <th scope="col">تنظیمات</th>
                 </tr>
                 </thead>
+                <tbody>
                 @forelse($tickets as $ticket)
-                    <tbody>
-
                     <tr>
                         <th>{{ $loop->iteration }}</th>
                         <td>{{ $ticket->name }}</td>
                         <td>
                             <div class="d-flex align-items-center">
                                 <div class="mx-2">
-                                    <form action="{{ route('admin.tickets.ticket-category.destroy', $ticket) }}" method="POST">
+                                    <form action="{{ route('admin.tickets.ticket-category.destroy', $ticket) }}"
+                                          method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
@@ -55,10 +55,8 @@
                             </div>
                         </td>
                     </tr>
-                    @empty @endforelse
-
-
-                    </tbody>
+                @empty @endforelse
+                </tbody>
             </table>
 
         </section>
