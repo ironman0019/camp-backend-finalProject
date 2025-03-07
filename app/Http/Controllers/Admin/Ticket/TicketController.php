@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Admin\Ticket;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ticket\Ticket;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
     public function index()
     {
-
+        $tickets = Ticket::paginate(10);
+        return view('admin.ticket.tickets.index', compact('tickets'));
     }
 
     public function create()

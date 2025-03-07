@@ -29,14 +29,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($tickets as $ticket)
+                @forelse($ticketCategories as $ticketCategory)
                     <tr>
                         <th>{{ $loop->iteration }}</th>
-                        <td>{{ $ticket->name }}</td>
+                        <td>{{ $ticketCategory->name }}</td>
                         <td>
                             <div class="d-flex align-items-center">
                                 <div class="mx-2">
-                                    <form action="{{ route('admin.tickets.ticket-category.destroy', $ticket) }}"
+                                    <form action="{{ route('admin.tickets.ticket-category.destroy', $ticketCategory) }}"
                                           method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -47,7 +47,7 @@
                                     </form>
                                 </div>
                                 <div class="mx-2">
-                                    <a href="{{ route('admin.tickets.ticket-category.edit', $ticket) }}"
+                                    <a href="{{ route('admin.tickets.ticket-category.edit', $ticketCategory) }}"
                                        class="text-warning">
                                         <i class="fa fa-edit"></i>
                                     </a>

@@ -13,8 +13,8 @@ class TicketCategoryController extends Controller
 {
     public function index()
     {
-        $tickets = TicketCategory::paginate(10);
-        return view('admin.ticket.ticket-category.index', compact('tickets'));
+        $ticketCategories = TicketCategory::paginate(10);
+        return view('admin.ticket.ticket-category.index', compact('ticketCategories'));
     }
 
     public function create()

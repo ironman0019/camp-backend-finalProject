@@ -9,7 +9,7 @@ class TicketCategory extends Model
 {
     use SoftDeletes;
 
-    protected $guarded = ['id'];
+    protected $fillable = ['name', 'status'];
 
-    
+
 }
