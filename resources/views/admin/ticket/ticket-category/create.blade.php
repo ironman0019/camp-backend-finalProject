@@ -18,12 +18,12 @@
 
                 </div>
                 <div>
-                    <a href="#" class="btn btn-warning">بازگشت</a>
+                    <a href="{{ route('admin.tickets.ticket-category.index') }}" class="btn btn-warning">بازگشت</a>
                 </div>
             </section>
             <section class="body-content">
 
-                <form class="row g-3" action="#" method="post">
+                <form class="row g-3" action="{{ route('admin.tickets.ticket-category.store') }}" method="post">
                     @csrf
 
                     <div class="col-md-12 mb-2">

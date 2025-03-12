@@ -8,7 +8,7 @@
     <section class="main-body-container-header d-flex justify-content-between align-items-center">
         <div>
             <h5>
-                تیکت ها 
+                تیکت ها
             </h5>
             <p>
                 در این بخش اطلاعاتی در مورد تیکت ها به شما داده می شود
@@ -33,20 +33,20 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @forelse($tickets as $ticket)
                 <tr>
-                    <th>#</th>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
+                    <th>{{ $loop->iteration }}</th>
+                    <td>{{ $ticket->subject }}</td>
+                    <td>{{ str()->limit($ticket->body, 20) }}</td>
+                    <td>{{ \App\Enums\TicketStatusEnum::getBy($ticket->status->value)?->getLabel() }}</td>
+                    <td>{{ $ticket->admin?->user?->name }}</td>
+                    <td>{{ $ticket->user?->name }}</td>
+                    <td>{{ $ticket->category?->name }}</td>
+                    <td>{{ $ticket->parent->subject }}</td>
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="mx-2">
-                                <form action="#" method="POST">
+                                <form action="{{ route('admin.tickets.ticket.destroy', $ticket) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -55,35 +55,30 @@
                                     </button>
                                 </form>
                             </div>
-                            {{-- if($ticket->parent_id != null)
-                                <div class="mx-2">
-                                    <a href="{{ route('admin.tickets.ticket.edit', $ticket) }}"
-                                        class="text-warning">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                </div>
-                            endif --}}
+
                             <div class="mx-2">
-                                <a href="#"
+                                <a href="{{ route('admin.tickets.ticket.show', $ticket) }}"
                                     class="text-primary">
                                     <i class="fa fa-eye"></i>
                                 </a>
                             </div>
-                            {{-- if($ticket->parent_id == null)
-                                <div class="mx-2">
-                                    <a href="{{ route('admin.tickets.ticket.status', $ticket) }}"
-                                        class="text-info">
-                                        <i class="fa {{ $ticket->status ? 'fa-toggle-off' : 'fa-toggle-on' }}"></i>
-                                    </a>
-                                </div>
-                            endif --}}
+
+                            <div class="mx-2">
+                                <a href="{{ route('admin.tickets.ticket.status', $ticket) }}"
+                                   class="text-warning">
+                                    <i @class(['fa ', \App\Enums\TicketStatusEnum::getBy($ticket->status->value)->getIcon()])></i>
+                                </a>
+                            </div>
+
                         </div>
                     </td>
-                    {{-- if($ticket->ticketFile)
-                        <td><a href="{{ $ticket->ticketFile->file_path }}">دانلود</a></td>
-                    endif --}}
+                    <td>
+                        @if($ticket->file)
+                            <a href="#"><i class="fa fa-download"></i></a>
+                        @endif
+                    </td>
                 </tr>
-                
+                @empty @endforelse
 
 
             </tbody>

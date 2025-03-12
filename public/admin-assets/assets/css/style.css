@@ -9,6 +9,10 @@
     font-family: IRANSans;
 }
 
+.swal2-html-container{
+    text-align: center;
+}
+
 .bg-gray {
     background-color: #404E67;
     color: #dcdcdc;

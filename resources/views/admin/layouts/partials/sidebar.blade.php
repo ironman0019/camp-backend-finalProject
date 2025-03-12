@@ -33,12 +33,12 @@
 
             <section class="sidebar-part-title">بخش تیکت ها</section>
 
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.tickets.ticket-category.index') }}" class="sidebar-link">
                 <i class="fas fa-bars"></i>
                 <span>دسته بندی تیکت ها</span>
             </a>
 
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.tickets.ticket.index') }}" class="sidebar-link">
                 <i class="fas fa-ticket-alt"></i>
                 <span>تیکت ها</span>
             </a>
