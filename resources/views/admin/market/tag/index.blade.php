@@ -36,7 +36,7 @@
                     <td>
                         <div class="d-flex">
                             <div class="mx-2">
-                                <form action="{{ route('admin.market.tag.destroy') }}" method="POST">
+                                <form action="{{ route('admin.market.tag.destroy', $tag) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -46,7 +46,7 @@
                                 </form>
                             </div>
                             <div class="mx-2">
-                                <a href="{{ route('admin.market.tag.edit') }}"
+                                <a href="{{ route('admin.market.tag.edit', $tag) }}"
                                     class="text-warning">
                                     <i class="fa fa-edit"></i>
                                 </a>
