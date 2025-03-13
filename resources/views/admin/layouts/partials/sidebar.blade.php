@@ -20,6 +20,11 @@
                 <span>محصولات</span>
             </a>
 
+            <a href="{{ route('admin.market.tag.index') }}" class="sidebar-link">
+                <i class="fas fa-tag"></i>
+                <span>تگ ها</span>
+            </a>
+
             <a href="#" class="sidebar-link">
                 <i class="fas fa-dollar-sign"></i>
                 <span>تخفیفات</span>

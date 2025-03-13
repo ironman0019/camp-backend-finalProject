@@ -13,7 +13,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::paginate(10);
+        return view('admin.market.tag.index', compact('tags'));
     }
 
     /**

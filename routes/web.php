@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Market\TagController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Ticket\TicketController;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,8 @@ Route::prefix('admin')->middleware([])->name('admin.')->group(function() {
 
     Route::prefix('market')->name('market.')->group(function() {
         // TODO
+        // Tags
+        Route::resource('tag', TagController::class);
     });
 
 
