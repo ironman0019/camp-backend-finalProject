@@ -48,8 +48,9 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tag $tag)
+    public function destroy(Tag $tag): RedirectResponse
     {
-        //
+        $tag->delete();
+        return to_route('admin.market.tag.index')->with('swal-success', 'تگ با موفقیت حذف شد');
     }
 }
