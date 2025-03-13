@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Market;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\StoreTagRequest;
+use App\Http\Requests\Admin\Product\UpdateTagRequest;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -28,28 +29,20 @@ class TagController extends Controller
         return to_route('admin.market.tag.index')->with('swal-success', 'تگ با موفقیت اضافه شد');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Tag $tag)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.market.tag.edit', compact('tag'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tag $tag)
+    public function update(UpdateTagRequest $request, Tag $tag): RedirectResponse
     {
-        //
+        $tag->update($request->validated());
+        return to_route('admin.market.tag.index')->with('swal-success', 'تگ با موفقیت ویرایش شد');
     }
 
     /**
