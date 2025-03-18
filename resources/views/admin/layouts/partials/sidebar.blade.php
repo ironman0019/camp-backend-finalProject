@@ -15,7 +15,7 @@
             </a>
 
 
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.market.product.index') }}" class="sidebar-link">
                 <i class="fas fa-box"></i>
                 <span>محصولات</span>
             </a>
