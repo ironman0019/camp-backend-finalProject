@@ -28,23 +28,25 @@
                     <th scope="col">اسلاگ</th>
                     <th scope="col">قیمت</th>
                     <th scope="col">عکس</th>
+                    <th scope="col">دانلود فایل</th>
                     <th scope="col">تنظیمات</th>
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach ($products as $product)
                 <tr>
-                    <th>#</th>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
+                    <th>{{ $loop->iteration }}</th>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->slug }}</td>
+                    <td>{{ number_format($product->price) }}</td>
                     <td>
-                        <img src="#" alt="image" class="img-fluid" width="100" height="100">
+                        <img src="{{ $product->image }}" alt="image" class="img-fluid" width="100" height="100">
                     </td>
+                    <td><a href="{{ route('admin.market.product.download-file', ['filePath' => urlencode($product->file_path)]) }}" class="btn btn-primary">دانلود</button></a>
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="mx-2">
-                                <form action="#" method="POST">
+                                <form action="{{ route('admin.market.product.destroy', $product) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -54,13 +56,13 @@
                                 </form>
                             </div>
                             <div class="mx-2">
-                                <a href="#"
+                                <a href="{{ route('admin.market.product.edit', $product) }}"
                                     class="text-warning">
                                     <i class="fa fa-edit"></i>
                                 </a>
                             </div>
                             <div class="mx-2">
-                                <a href="#"
+                                <a href="{{ route('admin.market.product.show', $product) }}"
                                     class="text-primary">
                                     <i class="fa fa-eye"></i>
                                 </a>
@@ -74,13 +76,14 @@
                         </div>
                     </td>
                 </tr>
+                @endforeach
                 
 
 
             </tbody>
         </table>
         <div>
-            #paginate
+            {{ $products->links() }}
         </div>
 
     </section>
