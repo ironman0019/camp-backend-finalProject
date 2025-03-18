@@ -2,6 +2,7 @@
 
 namespace App\Models\Market;
 
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,6 +25,18 @@ class Product extends Model
                 'source' => 'name'
             ]
         ];
+    } 
+
+    // Relation with tags
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    // Relation with product category
+    public function productCategory()
+    {
+        return $this->belongsTo(ProductCategory::class);
     }
 
 }
