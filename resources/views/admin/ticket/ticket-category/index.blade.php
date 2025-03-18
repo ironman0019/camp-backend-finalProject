@@ -58,6 +58,10 @@
                 @empty @endforelse
                 </tbody>
             </table>
+            <div>
+                {{ $ticketCategories->links() }}
+            </div>
+
 
         </section>
     </section>

@@ -59,6 +59,9 @@
 
             </tbody>
         </table>
+        <div>
+            {{ $tags->links() }}
+        </div>
 
     </section>
 </section>
