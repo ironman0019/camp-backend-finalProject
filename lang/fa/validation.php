@@ -207,6 +207,7 @@ return [
         'subject' => 'عنوان',
         'english_name' => 'نام لاتین',
         'amount_type' => 'نوع تخفیف',
-        'discount_percent' => 'درصد تخفیف'
+        'discount_percent' => 'درصد تخفیف',
+        'file_original_name' => 'اسم اصلی فایل'
     ],
 ];
