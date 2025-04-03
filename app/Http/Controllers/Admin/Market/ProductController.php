@@ -101,7 +101,7 @@ class ProductController extends Controller
         }
 
         if($request->hasFile('file')) {
-            // Remove old image
+            // Remove old file
             $fileUploadService->deleteFile($product->file_path);
 
             $result = $fileUploadService->uploadFile($request->file('file'));
