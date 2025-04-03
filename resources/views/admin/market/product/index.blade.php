@@ -68,9 +68,9 @@
                                 </a>
                             </div>
                             <div class="mx-2">
-                                <a href="#"
+                                <a href="{{ route('admin.market.product-items.index', $product) }}"
                                     class="text-success">
-                                    <i class="fa fa-image"></i>
+                                    <i class="fa fa-box"></i>
                                 </a>
                             </div>
                         </div>
