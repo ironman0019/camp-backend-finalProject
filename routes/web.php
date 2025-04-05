@@ -21,7 +21,7 @@ Route::middleware(['auth'])->group(function() {
 require __DIR__.'/auth.php';
 
 
-Route::prefix('admin')->middleware([])->name('admin.')->group(function() {
+Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function() {
 
     Route::get('/', DashbordController::class);
 
