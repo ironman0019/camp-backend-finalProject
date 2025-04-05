@@ -1177,13 +1177,13 @@
                             </div>
                         </button>
                         <!-- user (desktop)-->
-                        <button class="btn btn-lg btn-link header-buttons-link d-none d-lg-flex" type="button"><i
+                        <a  class="btn btn-lg btn-link header-buttons-link d-none d-lg-flex" href="{{ route('login') }}"><i
                                 class="ti ti-user fs-2"></i>
                             <div class="nt-flex-column gap-0">
                                 <div class="small text-body-secondary">سلام، وارد شوید به</div>
                                 <div class="nt-fw-500">حساب کاربری</div>
                             </div>
-                        </button>
+                        </a>
                         <!-- cart (desktop)-->
                         <button class="btn btn-lg btn-secondary header-cart d-none d-lg-flex" type="button"
                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
