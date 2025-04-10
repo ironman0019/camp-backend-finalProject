@@ -39,7 +39,7 @@ class UserProfileController extends Controller
 
         // Hash the password
         if (!empty($inputs['password'])) {
-            $data['password'] = Hash::make($inputs['password']);
+            $data['password'] = bcrypt($inputs['password']);
         }
 
         if($request->hasFile('profile_image')) {
