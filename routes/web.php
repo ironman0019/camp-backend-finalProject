@@ -8,12 +8,20 @@ use App\Http\Controllers\Admin\DashbordController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Admin\Market\ProductItemController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\UserDashbordController;
+use App\Http\Controllers\Home\UserProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::middleware(['auth'])->group(function() {
     //TODO
+
+    // user dashbord routes
+    Route::get('user/dashbord/index', [UserDashbordController::class, 'index'])->name('user.dashbord.index');
+    Route::get('user/profile/edit/{id}', [UserProfileController::class, 'edit'])->name('user.profile.edit');
+    Route::put('user/profile/update/{user}', [UserProfileController::class, 'update'])->name('user.profile.update');
+
 });
 
 
