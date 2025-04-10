@@ -21,7 +21,7 @@
                 </section>
                 <section class="login-btn d-grid g-2"><button class="btn btn-danger" type="submit">ورود به آمازون</button></section>
             </form>
-            <section class="login-terms-and-conditions"><a href="#">شرایط و قوانین</a> را خوانده ام و پذیرفته ام</section>
+            <section class="login-terms-and-conditions"><a href="{{ route('login.with.password') }}">ورود</a> با رمز عبور</section>
             @if (session('error'))
                 <section class="alert alert-danger">
                     {{ session('error') }}
