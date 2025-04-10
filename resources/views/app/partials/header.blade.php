@@ -1144,7 +1144,7 @@
             <div class="row align-items-center">
                 <!-- logo-->
                 <div class="col-auto">
-                    <div class="header-logo"><a class="btn btn-link link-light" href="#"> <i
+                    <div class="header-logo"><a class="btn btn-link link-light" href="{{ route('home') }}"> <i
                                 class="ti ti-circle display-1"></i>
                             <div class="nt-flex-column">
                                 <h1 class="fs-1 nt-fw-bolder mb-0">نتـیفای</h1>
@@ -1177,6 +1177,7 @@
                             </div>
                         </button>
                         <!-- user (desktop)-->
+                        @if(!auth()->check())
                         <a  class="btn btn-lg btn-link header-buttons-link d-none d-lg-flex" href="{{ route('login') }}"><i
                                 class="ti ti-user fs-2"></i>
                             <div class="nt-flex-column gap-0">
@@ -1184,6 +1185,15 @@
                                 <div class="nt-fw-500">حساب کاربری</div>
                             </div>
                         </a>
+                        @else
+                        <a  class="btn btn-lg btn-link header-buttons-link d-none d-lg-flex" href="{{ route('user.dashbord.index') }}"><i
+                            class="ti ti-user fs-2"></i>
+                            <div class="nt-flex-column gap-0">
+                                <div class="small text-body-secondary">سلام، خوش آمدید</div>
+                                <div class="nt-fw-500">{{ auth()->user()->name }}</div>
+                            </div>
+                        </a>
+                        @endif
                         <!-- cart (desktop)-->
                         <button class="btn btn-lg btn-secondary header-cart d-none d-lg-flex" type="button"
                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
