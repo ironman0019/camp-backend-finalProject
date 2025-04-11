@@ -45,7 +45,7 @@
         <div class="d-none d-lg-block">
             <!-- sidebar nav-->
             <nav class="profile-sidebar-nav bg-body"><a
-                    class="btn btn-lg nt-fw-500 profile-sidebar-link active" href="javascript:;"><i
+                    class="btn btn-lg nt-fw-500 profile-sidebar-link {{ Route::is('user.dashbord.index') ? 'active' : '' }}" " href="{{ route('user.dashbord.index') }}"><i
                         class="ti ti-home-2 fs-3"></i>خلاصه فعالیت ها</a><a
                     class="btn btn-lg nt-fw-500 profile-sidebar-link" href="user-orders.html"><i
                         class="ti ti-shopping-bag fs-3"></i>سفارش ها</a><a
@@ -57,7 +57,7 @@
                         class="ti ti-address-book fs-3"></i>آدرس ها</a><a
                     class="btn btn-lg nt-fw-500 profile-sidebar-link" href="user-history.html"><i
                         class="ti ti-history fs-3"></i>بازدید های اخیر</a><a
-                    class="btn btn-lg nt-fw-500 profile-sidebar-link" href="user-info.html"><i
+                    class="btn btn-lg nt-fw-500 profile-sidebar-link {{ Route::is('user.dashbord.user-info') ? 'active' : '' }}" href="{{ route('user.dashbord.user-info') }}"><i
                         class="ti ti-user fs-3"></i>اطلاعات حساب کاربری</a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
