@@ -26,7 +26,7 @@
                             <!-- items-->
                             <div class="row">
                                 <div class="col-12 col-md-4"><a class="link-body-emphasis nt-flex-start-center gap-4"
-                                        href="#"><img src="img/pages/user-profile/packages/package-pen.png"
+                                        href="#"><img src="{{ asset('assets/img/pages/user-profile/packages/package-pen.png') }}"
                                             alt="" width="75" />
                                         <div class="nt-flex-column">
                                             <div class="nt-flex-start-center gap-3 nt-fw-500">
@@ -38,7 +38,7 @@
                                         </div>
                                     </a></div>
                                 <div class="col-12 col-md-4"><a class="link-body-emphasis nt-flex-start-center gap-4"
-                                        href="#"><img src="img/pages/user-profile/packages/package-check.png"
+                                        href="#"><img src="{{ asset('assets/img/pages/user-profile/packages/package-check.png') }}"
                                             alt="" width="75" />
                                         <div class="nt-flex-column">
                                             <div class="nt-flex-start-center gap-3 nt-fw-500">
@@ -50,7 +50,7 @@
                                         </div>
                                     </a></div>
                                 <div class="col-12 col-md-4"><a class="link-body-emphasis nt-flex-start-center gap-4"
-                                        href="#"><img src="img/pages/user-profile/packages/package-minus.png"
+                                        href="#"><img src="{{ asset('assets/img/pages/user-profile/packages/package-minus.png') }}"
                                             alt="" width="75" />
                                         <div class="nt-flex-column">
                                             <div class="nt-flex-start-center gap-3 nt-fw-500">
