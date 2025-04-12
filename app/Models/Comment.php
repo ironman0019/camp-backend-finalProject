@@ -10,4 +10,21 @@ class Comment extends Model
     use SoftDeletes;
 
     protected $guarded = ['id'];
+
+    // Relation with user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo($this, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany($this, 'parent_id');
+    }
+    
 }
