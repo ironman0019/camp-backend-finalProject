@@ -1,17 +1,19 @@
 <?php
 
-use App\Http\Controllers\Admin\Market\TagController;
-use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
-use App\Http\Controllers\Admin\Ticket\TicketController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\CheckoutController;
 use App\Http\Controllers\Admin\DashbordController;
+use App\Http\Controllers\Admin\Market\TagController;
+use App\Http\Controllers\Home\UserProfileController;
+use App\Http\Controllers\Home\UserDashbordController;
+use App\Http\Controllers\Admin\Ticket\TicketController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Admin\Market\ProductItemController;
-use App\Http\Controllers\Home\HomeController;
-use App\Http\Controllers\Home\UserDashbordController;
-use App\Http\Controllers\Home\UserProfileController;
+use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('product/{product}/{slug}', [HomeController::class, 'product'])->name('product.show');
 
 
 Route::middleware(['auth'])->group(function() {
@@ -22,6 +24,10 @@ Route::middleware(['auth'])->group(function() {
     Route::get('user/dashbord/user-info', [UserDashbordController::class, 'userInfo'])->name('user.dashbord.user-info');
     Route::get('user/profile/edit/{id}', [UserProfileController::class, 'edit'])->name('user.profile.edit');
     Route::put('user/profile/update/{user}', [UserProfileController::class, 'update'])->name('user.profile.update');
+
+    // checkout routes
+    Route::get('checkout', [CheckoutController::class, 'show'])->name('checkout');
+    // Route::post('checkout/apply-discount', [CheckoutController::class, 'applyDiscount'])->name('checkout.apply-discount');
 
 });
 
