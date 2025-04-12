@@ -1131,7 +1131,7 @@
                     <div class="nt-fw-500 fs-5">۴۱۹،۲۶۰،۰۰۰</div>
                     <div class="small">تومان</div>
                 </div>
-            </div><a class="btn btn-lg btn-danger" href="#">ثبت سفارش</a>
+            </div><a class="btn btn-lg btn-danger" href="checkout">پرداخت</a>
         </div>
     </div>
 </div>
