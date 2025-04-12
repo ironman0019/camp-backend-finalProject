@@ -25,4 +25,12 @@ class ProductCategory extends Model
             ]
         ];
     }
+
+
+    // Relation with products
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }
