@@ -100,7 +100,15 @@
             <div class="tab-pane fade" id="features">
                 <table class="table table-bordered">
                     <tr><th>قیمت</th><td>{{ number_format($product->price) }}</td></tr>
-                    <tr><th>برچسب‌ها</th><td>{{ $product->tags }}</td></tr>
+                    <tr><th>برچسب‌ها</th>
+                        <td>
+                            @foreach($product->tags as $tag)
+                            <a href="#">
+                                <span class="badge bg-secondary small">{{ $tag->name }}</span>
+                            </a>
+                            @endforeach
+                        </td>
+                    </tr>
                     <tr><th>تعداد فروش</th><td>{{ $product->sold_number }}</td></tr>
                     <tr><th>دسته‌بندی</th><td>{{ $product->productCategory->name }}</td></tr>
                     <tr><th>توضیحات دیگر</th><td>...</td></tr>
