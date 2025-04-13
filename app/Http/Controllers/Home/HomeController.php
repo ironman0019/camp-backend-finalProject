@@ -11,7 +11,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $mostViewedProducts = Product::where('marketable', 1)->orderBy('view_count', 'desc')->take(8)->get();
+        $discountProducts = Product::where('marketable', 1)->where('discount_status', 1)->take(10)->get();
+        return view('index', compact('mostViewedProducts', 'discountProducts'));
     }
 
     public function product(Product $product)
