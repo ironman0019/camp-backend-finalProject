@@ -27,13 +27,13 @@
     </section>
 
 
-    <!-- wordpress section-->
+    <!-- most viewed products section-->
     <section class="container-fluid wrapper mt-5 mb-5">
         <div class="index-offer py-4">
             <div class="index-offer-bg" style="background-color: var(--bs-primary)"></div>
             <header class="nt-flex gap-4 p-3">
                 <div class="nt-flex-column gap-4">
-                    <div class="fs-2 nt-fw-500 text-light text-nowrap">محصولات ورد پرسی</div>
+                    <div class="fs-2 nt-fw-500 text-light text-nowrap">محصولات پربازدید</div>
                 </div>
             </header>
             <div class="swiper px-5 py-5"
@@ -42,11 +42,14 @@
                 <!-- wrapper-->
                 <div class="swiper-wrapper">
                     <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top"
-                                src="{{ asset('assets/img/pages/index/offers/1.jpg') }}" alt="" />
+                    @foreach($mostViewedProducts as $mostViewedProduct)
+                    <div class="swiper-slide h-auto" style="max-width:13rem">
+                        <a class="card h-100 rounded-4 px-2 py-4"
+                            href="{{ route('product.show', [$mostViewedProduct, $mostViewedProduct->slug]) }}"><img class="card-img-top"
+                                src="{{ $mostViewedProduct->image }}" alt="{{ $mostViewedProduct->name }}" />
                             <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2"> آیتم یک
+                                <div class="card-title lh-lg nt-clamp-2">
+                                    {{ $mostViewedProduct->name }}
                                 </div>
                                 <div class="card-text"></div>
                             </div>
@@ -54,11 +57,13 @@
                                 <div class="nt-fw-bold" dir="ltr">
                                     <div class="nt-flex-start-center gap-1">
                                         <div class="small">تومان</div>
-                                        <div class="fs-5">۲۰,۴۰۰,۰۰۰</div>
+                                        <div class="fs-5">{{ number_format($mostViewedProduct->price) }}</div>
                                     </div>
                                 </div>
                             </div>
-                        </a></div>
+                        </a>
+                    </div>
+                    @endforeach
 
                 </div>
                 <div class="swiper-pagination"></div>
@@ -88,324 +93,35 @@
                 <!-- wrapper-->
                 <div class="swiper-wrapper">
                     <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/1.jpg"
-                                alt="" />
+                    @foreach($discountProducts as $discountProduct)
+                    <div class="swiper-slide h-auto" style="max-width:13rem">
+                        <a class="card h-100 rounded-4 px-2 py-4"
+                            href="{{ route('product.show', [$discountProduct, $discountProduct->slug]) }}"><img class="card-img-top" src="{{ $discountProduct->image }}"
+                                alt="{{ $discountProduct->name }}" />
                             <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">ماشین لباسشویی دوو مدل DWK-UN810C ظرفیت 8 کیلوگرم
+                                <div class="card-title lh-lg nt-clamp-2">
+                                    {{ $discountProduct->name }}
                                 </div>
                                 <div class="card-text"></div>
                             </div>
                             <div class="card-footer bg-transparent border-0">
                                 <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">۲۹٪</div>
+                                    <div class="badge bg-danger text-light rounded-pill">{{ $discountProduct->discount_percent }}٪</div>
                                     <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">۱۶,۴۹۹,۰۰۰</div>
+                                        <div class="text-decoration-line-through">{{ number_format($discountProduct->price) }}</div>
                                         <div class="small">تومان</div>
                                     </div>
                                 </div>
                                 <div class="nt-fw-bold" dir="ltr">
                                     <div class="nt-flex-start-center gap-1">
                                         <div class="small">تومان</div>
-                                        <div class="fs-5">۲۰,۴۰۰,۰۰۰</div>
+                                        <div class="fs-5">{{ number_format($discountProduct->off_price) }}</div>
                                     </div>
                                 </div>
                             </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/2.jpg"
-                                alt="" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">جاروبرقی ایربات مدل L108S Pro Ultra</div>
-                                <div class="card-text"></div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">۲۴٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">۳۹,۹۹۹,۰۰۰</div>
-                                        <div class="small">تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۵۲,۸۲۰,۳۴۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/3.jpg" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">
-                                    ماشین ظرفشویی وست پوینت مدل WYG-15822.ES</div>
-                                <div class="card-text"> </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">
-                                        ۱۵٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">
-                                            ۳۳,۹۹۹,۰۰۰</div>
-                                        <div class="small">
-                                            تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۳۹,۸۰۰,۰۰۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/4.jpg" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">
-                                    جاروبرقی روبوراک مدل Q Revo Max V </div>
-                                <div class="card-text"> </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">
-                                        ۴۱٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">
-                                            ۷۴,۹۰۰,۰۰۰</div>
-                                        <div class="small">
-                                            تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۱۲۷,۹۸۲,۰۲۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/5.jpg" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">
-                                    یخچال و فریزر ساید بای ساید 28 فوت ایکس ویژن مدل TS552-AWD/ASD</div>
-                                <div class="card-text"> </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">
-                                        ۶٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">
-                                            ۳۱,۵۰۰,۰۰۰</div>
-                                        <div class="small">
-                                            تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۳۳,۴۰۰,۰۰۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/6.jpg" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">
-                                    گوشی موبایل موتورولا مدل Moto G24 دو سیم‌ کارت ظرفیت 128 گیگابایت و رم 8 گیگابایت</div>
-                                <div class="card-text"> </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">
-                                        ۵٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">
-                                            ۵,۹۹۹,۰۰۰</div>
-                                        <div class="small">
-                                            تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۶,۳۰۰,۰۰۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/7.jpg" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">
-                                    گوشی موبایل هوآوی مدل nova 10 SE دو سیم کارت ظرفیت 256 گیگابایت و رم 8 گیگابایت</div>
-                                <div class="card-text"> </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">
-                                        ۴٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">
-                                            ۱۳,۱۹۹,۰۰۰</div>
-                                        <div class="small">
-                                            تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۱۳,۶۹۹,۰۰۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/8.jpg" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">
-                                    گوشی موبایل آنر مدل X9a دو سیم کارت ظرفیت 256 گیگابایت و رم 8 گیگابایت </div>
-                                <div class="card-text"> </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">
-                                        ۳٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">
-                                            ۱۴,۱۴۹,۰۰۰</div>
-                                        <div class="small">
-                                            تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۱۴,۵۵۹,۰۰۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/9.jpg" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">
-                                    گوشی موبایل ناتینگ مدل Phone 2 دو سیم کارت ظرفیت 512 گیگابایت و رم 12 گیگابایت</div>
-                                <div class="card-text"> </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">
-                                        ۲٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">
-                                            ۳۸,۳۹۹,۰۰۰</div>
-                                        <div class="small">
-                                            تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۳۹,۲۹۹,۰۰۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/10.jpg" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">
-                                    هدفون بلوتوثی پرووان مدل PHB3222</div>
-                                <div class="card-text"> </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">
-                                        ۴۱٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">
-                                            ۱,۰۹۹,۰۰۰</div>
-                                        <div class="small">
-                                            تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۱,۸۵۰,۰۰۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/11.jpg" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">
-                                    هدفون بلوتوثی انکر مدل SoundCore R50i A3949</div>
-                                <div class="card-text"> </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">
-                                        ۱۶٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">
-                                            ۷۸۹,۰۰۰</div>
-                                        <div class="small">
-                                            تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۹۴۰,۰۰۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <!-- slide-->
-                    <div class="swiper-slide h-auto" style="max-width:13rem"><a class="card h-100 rounded-4 px-2 py-4"
-                            href="#"><img class="card-img-top" src="img/pages/index/offers/12.jpg" />
-                            <div class="card-body">
-                                <div class="card-title lh-lg nt-clamp-2">
-                                    لپ تاپ 15.3 اینچی اپل مدل MacBook Air MQKP3 M2 2023</div>
-                                <div class="card-text"> </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-0">
-                                <div class="nt-flex-between-center mb-2">
-                                    <div class="badge bg-danger text-light rounded-pill">
-                                        ۸٪</div>
-                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
-                                        <div class="text-decoration-line-through">
-                                            ۶۷,۰۹۹,۰۰۰</div>
-                                        <div class="small">
-                                            تومان</div>
-                                    </div>
-                                </div>
-                                <div class="nt-fw-bold" dir="ltr">
-                                    <div class="nt-flex-start-center gap-1">
-                                        <div class="small">تومان</div>
-                                        <div class="fs-5">۷۲,۹۸۹,۰۰۰</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a></div>
+                        </a>
+                    </div>
+                    @endforeach
                 </div>
                 <div class="swiper-pagination"></div>
                 <!-- swiper buttons-->
@@ -418,6 +134,7 @@
                 </a></div>
         </div>
     </section>
+
     <!-- buttonLinks-->
     <section class="container-fluid wrapper mb-5">
         <div class="row g-4 py-4">
@@ -441,6 +158,7 @@
             @endforeach
         </div>
     </section>
+
     <!-- tags slider-->
     <section class="container-fluid wrapper mb-5">
         <div class="swiper py-5 px-1"
@@ -459,6 +177,7 @@
             </div>
         </div>
     </section>
+
     <!-- cols-->
     <section class="container-fluid wrapper mb-5">
         <div class="row g-4">
