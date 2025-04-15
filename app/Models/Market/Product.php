@@ -39,4 +39,10 @@ class Product extends Model
         return $this->belongsTo(ProductCategory::class);
     }
 
+    // Relation with product items
+    public function productItems()
+    {
+        return $this->hasMany(ProductItem::class);
+    }
+
 }
