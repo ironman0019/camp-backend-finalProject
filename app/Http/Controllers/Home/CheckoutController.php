@@ -16,42 +16,42 @@ class CheckoutController extends Controller
         $user = Auth::user();
         $cart = Cart::where('user_id', $user->id)->where('status', 0)->with('cartItems.product')->first();
 
-        // if(!$cart || $cart->cartItems->isEmpty()) {
-        //     return to_route('home');
-        // }
+        if(!$cart || $cart->cartItems->isEmpty()) {
+            return to_route('home');
+        }
 
         return view('app.checkout', compact('cart','user'));
     }
 
 
-    // public function applyDiscount(Request $request)
-    // {
-    //     $request->validate(['code' => 'required|string']);
+    public function applyDiscount(Request $request)
+    {
+        $request->validate(['code' => 'required|string']);
 
-    //     $user = Auth::user();
-    //     $cart = Cart::where('user_id', $user->id)->where('status', 0)->first();
+        $user = Auth::user();
+        $cart = Cart::where('user_id', $user->id)->where('status', 0)->first();
 
-    //     if(!$cart) {
-    //         return back()->with('error', 'سبد خرید یافت نشد');
-    //     }
+        if(!$cart) {
+            return back()->with('error', 'سبد خرید یافت نشد');
+        }
 
-    //     $coupan = Coupan::where('code', $request->input('code'))->first();
+        $coupan = Coupan::where('code', $request->input('code'))->first();
 
-    //     if(!$coupan || !$coupan->isValid()) {
-    //         return back()->with('error', 'کد نامعتبر است');
-    //     }
+        if(!$coupan || !$coupan->isValid()) {
+            return back()->with('error', 'کد نامعتبر است');
+        }
 
-    //     $discountAmount = $coupan->amount_type == 0 ? min(($cart->total_price * $coupan->amount / 100), $coupan->discount_ceiling) : min($coupan->amount, $cart->total_price);
+        $discountAmount = $coupan->amount_type == 0 ? min(($cart->total_price * $coupan->amount / 100), $coupan->discount_ceiling) : min($coupan->amount, $cart->total_price);
 
-    //     $cart->update([
-    //         'coupan_id' => $coupan->id,
-    //         'discount_status' => 1,
-    //         'total_discount_price' => $discountAmount
-    //     ]);
+        $cart->update([
+            'coupan_id' => $coupan->id,
+            'discount_status' => 1,
+            'total_discount_price' => $discountAmount
+        ]);
 
-    //     return back()->with('success', 'کد تخفیف با موفقیت اعمال شد');
+        return back()->with('success', 'کد تخفیف با موفقیت اعمال شد');
 
-    // }
+    }
 
 
 }
