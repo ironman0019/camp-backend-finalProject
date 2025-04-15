@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\OrderController;
 use App\Http\Controllers\Home\CheckoutController;
 use App\Http\Controllers\Admin\DashbordController;
 use App\Http\Controllers\Admin\Market\TagController;
@@ -25,9 +27,17 @@ Route::middleware(['auth'])->group(function() {
     Route::get('user/profile/edit/{id}', [UserProfileController::class, 'edit'])->name('user.profile.edit');
     Route::put('user/profile/update/{user}', [UserProfileController::class, 'update'])->name('user.profile.update');
 
+    // cart routes
+    // Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
+    Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
     // checkout routes
     Route::get('checkout', [CheckoutController::class, 'show'])->name('checkout');
-    // Route::post('checkout/apply-discount', [CheckoutController::class, 'applyDiscount'])->name('checkout.apply-discount');
+    Route::post('checkout/apply-discount', [CheckoutController::class, 'applyDiscount'])->name('checkout.apply-discount');
+
+    // order routes
+    Route::post('order/store', [OrderController::class, 'orderStore'])->name('order.store');
 
 });
 
