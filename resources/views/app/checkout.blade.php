@@ -5,6 +5,24 @@
 @section('styles')
 @parent
 <link rel="stylesheet" href="{{ asset('assets/css/checkout.css') }}">
+<style>
+    .radio-card {
+  display: block;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-check:checked + .radio-card {
+  border-color: #0d6efd; /* Bootstrap primary blue */
+  background-color: #e7f1ff;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+</style>
 @endsection
 
 
@@ -33,17 +51,17 @@
                                 <p class="alert alert-danger">{{ session('error') }}</p>
                             @endif
 
-                            @if(true)
-                                <div class="alert alert-success">
-                                    <p>کد تخفیف اعمال شد - {{ 'hi' }}</p>
-                                </div>
+                            @if($cart->discount_status)
+                                <section class="alert alert-success">
+                                    <p>کد تخفیف اعمال شد - {{ $cart->coupan->code }}</p>
+                                </section>
                             @else
                                 <div class="alert alert-primary d-flex align-items-center p-2">
                                     <i class="fa fa-info-circle me-2"></i>
                                     <span>کد تخفیف خود را در این بخش وارد کنید.</span>
                                 </div>
 
-                                <form action="#" method="post">
+                                <form action="{{ route('checkout.apply-discount') }}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-5">
@@ -60,55 +78,32 @@
                             @endif
                         </div>
 
-                        <!-- shipping method -->
-                        <form action="#" method="post">
+                        <!-- peyment method -->
+                        <form action="{{ route('order.store') }}" method="post">
                             @csrf
-                            <div class="checkout-box bg-white p-3 rounded mb-4">
-                                <div class="box-header d-flex justify-content-between align-items-center mb-2">
-                                    <h5 class="box-title">انتخاب روش ارسال</h5>
-                                </div>
+                            <div class="container py-4">
+                                <div class="row g-3">
 
-                                <div class="delivery-options row">
-                                    
-                                        <input type="radio" name="delivery_type" value="" id="delivery_">
-                                        <label for="delivery_" class="delivery-card col-md-4 p-2 mb-2 border rounded">
-                                            <div class="mb-1">
-                                                <i class="fa fa-calendar-alt me-1"></i>
-                                                {{ 'aefafe' }} | {{ 'afafadfw' }} {{ 'awfafwawfd' }}
-                                            </div>
-                                            <div>
-                                                <i class="fa fa-credit-card me-1"></i>
-                                                {{ 651235612 }} تومان
-                                            </div>
-                                        </label>
-                                    
-                                </div>
-                            </div>
+                                  <div class="col-md-4">
+                                    <input type="radio" class="btn-check" name="peyment_type" value="0" id="plan1" autocomplete="off">
+                                    <label class="radio-card" for="plan1">
+                                      <h5 class="mb-1">آنلاین</h5>
+                                      <p class="mb-0 text-muted">درگاه پرداخت زرین پال</p>
+                                    </label>
+                                  </div>
 
-                            <!-- address selection -->
-                            <div class="checkout-box bg-white p-3 rounded mb-4">
-                                <div class="box-header d-flex justify-content-between align-items-center mb-2">
-                                    <h5 class="box-title">انتخاب آدرس</h5>
-                                </div>
+                                  <div class="col-md-4">
+                                    <input type="radio" class="btn-check" name="peyment_type" value="2" id="plan2" autocomplete="off">
+                                    <label class="radio-card" for="plan2">
+                                      <h5 class="mb-1">کیف پول کاربر</h5>
+                                      <p class="mb-0 text-muted">موجودی: {{ auth()->user()->wallet->amount }}</p>
+                                    </label>
+                                  </div>
 
-                                <div class="address-options row">
-                                    
-                                        <input type="radio" name="address_id" value="" id="address_">
-                                        <label for="address_" class="address-card col-md-4 p-2 mb-2 border rounded">
-                                            <div class="mb-1">
-                                                <i class="fa fa-map-marker-alt me-1"></i>
-                                                {{ 'HI' }} - {{ 'no'}}: {{ 'LOrem oajfionsfekm;sefsfe' }}
-                                            </div>
-                                            <div>
-                                                <i class="fa fa-mail-bulk me-1"></i>
-                                                کد پستی: {{ 65312365132 }}
-                                            </div>
-                                        </label>
-                                        @error('address_id')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    
                                 </div>
+                                @error('peyment_type')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                     </div>
 
@@ -116,24 +111,24 @@
                     <div class="col-md-3">
                         <div class="checkout-summary bg-white p-3 rounded">
                             <div class="d-flex justify-content-between">
-                                <span class="text-muted">قیمت کالاها ({{ 48484848 }})</span>
-                                <span class="text-muted">{{ number_format(561654654654) }} تومان</span>
+                                <span class="text-muted">قیمت کالاها ({{ $cart->cartItems->count() }})</span>
+                                <span class="text-muted">{{ number_format($cart->total_price)  }} تومان</span>
                             </div>
                             <div class="d-flex justify-content-between mt-2">
                                 <span class="text-muted">تخفیف کالاها</span>
-                                <span class="text-danger fw-bold">{{ number_format(5315655656) }} تومان</span>
+                                <span class="text-danger fw-bold">{{ number_format($cart->total_discount_price) }} تومان</span>
                             </div>
 
                             <p class="mt-3 small">
                                 <i class="fa fa-info-circle me-1"></i>
-                                کالاها بر اساس نوع ارسالی که انتخاب می‌کنید در زمان تعیین شده ارسال خواهند شد.
+                                پس از پرداخت لینک دانلود فایل ها در داشبورد کاربر برای شما فعال میشود
                             </p>
 
                             <hr class="my-3">
 
                             <div class="d-flex justify-content-between">
                                 <strong>مبلغ قابل پرداخت</strong>
-                                <strong>{{ number_format(516654654654) }} تومان</strong>
+                                <strong>{{ number_format($cart->total_price - $cart->total_discount_price) }} تومان</strong>
                             </div>
 
                             <div class="mt-4">
