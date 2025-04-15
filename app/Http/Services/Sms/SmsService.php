@@ -49,4 +49,46 @@ class SmsService {
         }
     }
 
+
+    public function OrderStatus($phoneNumber, $orderStatus)
+    {
+
+        switch ($orderStatus) {
+            case 0:
+                $text =  'سفارش شما ثبت و در انتظار پرداخت است';
+            case 1:
+                $text =  'سفارش شما پرداخت و تکمیل شد به داشبورد کاربری خود مراجعه کنید.';
+            default:
+                $text =  '';
+        }
+
+        try {
+
+            $client = new SoapClient("http://api.payamak-panel.com/post/Send.asmx?wsdl", array('encoding' => 'UTF-8'));
+
+            $parameters = [
+                'username' => $this->username,
+                'password' => $this->password,
+                'from' => $this->from,
+                'to' => $phoneNumber,
+                'text' => $text,
+                'isflash' => false
+            ];
+
+            $result = $client->SendSimpleSms2($parameters);
+
+            if(isset($resault->SendSimpleSms2Result)) {
+                $responseCode = $result->SendSimpleSms2Result;
+                if($responseCode == 0) {
+                    return true;
+                } else {
+                    throw new \Exception('Error in sending sms!');
+                }
+            }
+            
+        } catch (SoapFault $e) {
+            throw new \Exception('Error in sending sms' . $e->getMessage()); // Don't show the message in production!
+        }
+    }
+
 }
