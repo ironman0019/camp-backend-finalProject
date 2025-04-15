@@ -5,6 +5,14 @@
 @section('content')
 
 
+    
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+    
     <!-- slider-->
     <section class="swiper"
         data-swiper-options="{&quot;loop&quot;:true, &quot;spaceBetween&quot;:0, &quot;autoHeight&quot;:true, &quot;autoplay&quot;:{&quot;delay&quot;: 5000}, &quot;speed&quot;:300 }"
