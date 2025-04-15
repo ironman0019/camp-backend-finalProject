@@ -841,286 +841,75 @@
         <button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-0">
+        @if(auth()->check() && $cart)
         <!-- content-->
         <div class="container-fluid bg-light-subtle">
             <ul class="row p-0 px-2 row-cols-1 g-3 cart">
+                @foreach($cart->cartItems as $item)
                 <div class="col">
                     <!-- item-->
                     <li class="card p-4">
                         <div class="row g-0">
                             <div class="col-4"><img class="img-fluid rounded"
-                                    src="img/layouts/offcanvas/item/pen.jpg" alt="" /></div>
+                                    src="{{ $item->product->image }}" alt="{{ $item->product->name }}" /></div>
                             <div class="col-8">
                                 <div class="card-body">
-                                    <div class="card-title nt-fw-500 lh-lg">قلم لمسی اپل مدل Pencil Pro</div>
+                                    <div class="card-title nt-fw-500 lh-lg">{{ $item->product->name }}</div>
                                 </div>
                                 <ul class="list-group list-group-flush cart-item-list p-3">
-                                    <li class="list-group-item border-0"><i
+                                    <li class="list-group-item border-0">
+                                        <i
                                             class="ti ti-circle-filled border rounded-pill fs-5"
-                                            style="color: #fff"></i>مشکی</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-shield fs-5 text-dark"></i>سرویس ویژه نتـیفای: 7 روز تضمین
-                                        بازگشت کالا</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-building-store fs-5 text-dark"></i>رایاتک شاپ</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-truck-delivery fs-5 text-primary"></i>ارسال نتـیفای</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-user fs-5 text-warning"></i>ارسال فروشنده</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-cube-send fs-5 text-danger"></i>ارسال امروز</li>
-                                </ul>
-                            </div>
-                            <div class="col-4 nt-flex-center-center">
-                                <!-- controls-->
-                                <div class="cart-counter nt-flex-start-center flex-nowrap border rounded p-1">
-                                    <button class="cart-counter-plus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-plus fs-5"></i></button><span
-                                        class="cart-counter-int text-danger">۲</span>
-                                    <button class="cart-counter-minus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-minus fs-5"></i></button>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="nt-flex-start-center p-3">
-                                    <div class="fs-4 nt-fw-500">۸,۹۹۰,۰۰۰</div>
-                                    <div class="small">تومان</div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </div>
-                <div class="col">
-                    <!-- item-->
-                    <li class="card p-4">
-                        <div class="row g-0">
-                            <div class="col-4"><img class="img-fluid rounded"
-                                    src="img/layouts/offcanvas/item/watch.jpg" alt="" /></div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title nt-fw-500 lh-lg">ساعت هوشمند اپل مدل Ultra 2 Titanium Case
-                                        Trail Loop 49mm</div>
-                                </div>
-                                <ul class="list-group list-group-flush cart-item-list p-3">
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-circle-filled border rounded-pill fs-5"
-                                            style="color: rgb(33, 150, 243)"></i>آبی</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-shield fs-5 text-dark"></i>گارانتی 18 ماهه پیکسل</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-building-store fs-5 text-dark"></i>تامین کالای آرتین همتا</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-truck-delivery fs-5 text-primary"></i>ارسال دیجی‌کالا از ۱ روز
-                                        کاری دیگر</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-user fs-5 text-warning"></i>ارسال فروشنده</li>
-                                </ul>
-                            </div>
-                            <div class="col-4 nt-flex-center-center">
-                                <!-- controls-->
-                                <div class="cart-counter nt-flex-start-center flex-nowrap border rounded p-1">
-                                    <button class="cart-counter-plus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-plus fs-5"></i></button><span
-                                        class="cart-counter-int text-danger">۲</span>
-                                    <button class="cart-counter-minus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-minus fs-5"></i></button>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="nt-flex-start-center p-3">
-                                    <div class="fs-4 nt-fw-500">۵۱,۹۹۰,۰۰۰</div>
-                                    <div class="small">تومان</div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </div>
-                <div class="col">
-                    <!-- item-->
-                    <li class="card p-4">
-                        <div class="row g-0">
-                            <div class="col-4"><img class="img-fluid rounded"
-                                    src="img/layouts/offcanvas/item/ipad.jpg" alt="" /></div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title nt-fw-500 lh-lg">تبلت 11 اینچی اپل مدل iPad Pro 2024 M4
-                                        Wi-Fi Nano-Texture ظرفیت 2 ترابایت و رم 16 گیگابایت</div>
-                                </div>
-                                <ul class="list-group list-group-flush cart-item-list p-3">
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-circle-filled border rounded-pill fs-5"
-                                            style="color: #000"></i>مشکی</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-shield fs-5 text-dark"></i>گارانتی 18 ماهه پیکسل</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-building-store fs-5 text-dark"></i>تامین کالای آرتین همتا</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-truck-delivery fs-5 text-primary"></i>ارسال دیجی‌کالا از ۱ روز
-                                        کاری دیگر</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-user fs-5 text-warning"></i>ارسال فروشنده از ۲ روز کاری دیگر
+                                            style="color: #f10000">
+                                        </i>
+                                        فرمت فایل اصلی: {{ substr($item->product->file_type, strpos($item->product->file_type, '/') + 1) }}
                                     </li>
-                                </ul>
-                            </div>
-                            <div class="col-4 nt-flex-center-center">
-                                <!-- controls-->
-                                <div class="cart-counter nt-flex-start-center flex-nowrap border rounded p-1">
-                                    <button class="cart-counter-plus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-plus fs-5"></i></button><span
-                                        class="cart-counter-int text-danger">۲</span>
-                                    <button class="cart-counter-minus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-minus fs-5"></i></button>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="nt-flex-start-center p-3">
-                                    <div class="fs-4 nt-fw-500">۱۱۴,۴۹۰,۰۰۰</div>
-                                    <div class="small">تومان</div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </div>
-                <div class="col">
-                    <!-- item-->
-                    <li class="card p-4">
-                        <div class="row g-0">
-                            <div class="col-4"><img class="img-fluid rounded"
-                                    src="img/layouts/offcanvas/item/keyboard.jpg" alt="" /></div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title nt-fw-500 lh-lg">کیبورد بی سیم اپل مدل Magic Keyboard - US
-                                        English</div>
-                                </div>
-                                <ul class="list-group list-group-flush cart-item-list p-3">
-                                    <li class="list-group-item border-0"><i
+                                    <li class="list-group-item border-0">
+                                        <i
+                                            class="ti ti-truck-delivery fs-5 text-primary">
+                                        </i>
+                                        تعداد فروش: {{ $item->product->sold_number }}
+                                        
+                                    </li>
+                                    <li class="list-group-item border-0">
+                                        <i
                                             class="ti ti-circle-filled border rounded-pill fs-5"
-                                            style="color: #fff"></i>سفید</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-shield fs-5 text-dark"></i>سرویس ویژه دیجی کالا: 7 روز تضمین
-                                        بازگشت کالا</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-building-store fs-5 text-dark"></i>فروشگاه دیجیتال فراجو</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-truck-delivery fs-5 text-primary"></i>ارسال دیجی‌کالا از ۲ روز
-                                        کاری دیگر</li>
-                                </ul>
-                            </div>
-                            <div class="col-4 nt-flex-center-center">
-                                <!-- controls-->
-                                <div class="cart-counter nt-flex-start-center flex-nowrap border rounded p-1">
-                                    <button class="cart-counter-plus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-plus fs-5"></i></button><span
-                                        class="cart-counter-int text-danger">۲</span>
-                                    <button class="cart-counter-minus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-minus fs-5"></i></button>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="nt-flex-start-center p-3">
-                                    <div class="fs-4 nt-fw-500">۱۳,۸۱۹,۰۰۰</div>
-                                    <div class="small">تومان</div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </div>
-                <div class="col">
-                    <!-- item-->
-                    <li class="card p-4">
-                        <div class="row g-0">
-                            <div class="col-4"><img class="img-fluid rounded"
-                                    src="img/layouts/offcanvas/item/airpods.jpg" alt="" /></div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title nt-fw-500 lh-lg">هدفون بلوتوثی اپل مدل AirPods Max 2024
-                                    </div>
-                                </div>
-                                <ul class="list-group list-group-flush cart-item-list p-3">
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-circle-filled border rounded-pill fs-5"
-                                            style="color: rgb(156, 39, 177)"></i>بنفش</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-shield fs-5 text-dark"></i>گارانتی 18 ماهه صدرتل</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-building-store fs-5 text-dark"></i>نتـیفای</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-truck-delivery fs-5 text-primary"></i>ارسال نتـیفای</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-cube-send fs-5 text-danger"></i>ارسال امروز</li>
+                                            style="color: #3204d8">
+                                        </i>
+                                        قیمت محصول: {{ number_format($item->product->price) }}
+                                    </li>
+                                    @if($item->product->discount_status)
                                     <li class="list-group-item border-0">
                                         <div class="small text-danger">
-                                            ۱,۳۰۰,۰۰۰
-                                            تومان تخفیف
+                                          {{ number_format($item->product->price - $item->product->off_price) }}
+                                          تومان تخفیف
                                         </div>
                                     </li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="col-4 nt-flex-center-center">
                                 <!-- controls-->
                                 <div class="cart-counter nt-flex-start-center flex-nowrap border rounded p-1">
-                                    <button class="cart-counter-plus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-plus fs-5"></i></button><span
-                                        class="cart-counter-int text-danger">۲</span>
-                                    <button class="cart-counter-minus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-minus fs-5"></i></button>
+                                    <form action="{{ route('cart.remove', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="cart-counter-minus btn btn-sm btn-link link-danger" type="submit">
+                                            <i class="ti ti-trash fs-5"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="col-8">
                                 <div class="nt-flex-start-center p-3">
-                                    <div class="fs-4 nt-fw-500">۳۶,۰۰۰,۰۰۰</div>
+                                    <div class="fs-4 nt-fw-500">{{ $item->product->discount_status ? number_format($item->product->off_price) : number_format($item->product->price) }}</div>
                                     <div class="small">تومان</div>
                                 </div>
                             </div>
                         </div>
                     </li>
                 </div>
-                <div class="col">
-                    <!-- item-->
-                    <li class="card p-4">
-                        <div class="row g-0">
-                            <div class="col-4"><img class="img-fluid rounded"
-                                    src="img/layouts/offcanvas/item/macbook.html" alt="" /></div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title nt-fw-500 lh-lg">لپ تاپ 16.2 اینچی اپل مدل MacBook Pro MUW63
-                                        2023 LLA-M3 Max-48GB RAM-1TB SSD</div>
-                                </div>
-                                <ul class="list-group list-group-flush cart-item-list p-3">
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-circle-filled border rounded-pill fs-5"
-                                            style="color: #000"></i>مشکی</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-shield fs-5 text-dark"></i>گارانتی 18 ماهه پیکسل</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-building-store fs-5 text-dark"></i>تامین کالای آرتین همتا</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-truck-delivery fs-5 text-primary"></i>ارسال دیجی‌کالا از ۱ روز
-                                        کاری دیگر</li>
-                                    <li class="list-group-item border-0"><i
-                                            class="ti ti-user fs-5 text-warning"></i>ارسال فروشنده از ۲ روز کاری دیگر
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-4 nt-flex-center-center">
-                                <!-- controls-->
-                                <div class="cart-counter nt-flex-start-center flex-nowrap border rounded p-1">
-                                    <button class="cart-counter-plus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-plus fs-5"></i></button><span
-                                        class="cart-counter-int text-danger">۲</span>
-                                    <button class="cart-counter-minus btn btn-sm btn-link link-danger" type="button">
-                                        <i class="ti ti-minus fs-5"></i></button>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="nt-flex-start-center p-3">
-                                    <div class="fs-4 nt-fw-500">۲۴۶,۹۰۰,۰۰۰</div>
-                                    <div class="small">تومان</div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </div>
+                @endforeach
             </ul>
         </div>
         <!-- footer-->
@@ -1128,11 +917,18 @@
             <div class="nt-flex-column">
                 <div class="text-body-secondary">مبلغ قابل پرداخت</div>
                 <div class="nt-flex-start-center">
-                    <div class="nt-fw-500 fs-5">۴۱۹،۲۶۰،۰۰۰</div>
+                    <div class="nt-fw-500 fs-5">{{ number_format($cartTotalPrice) }}</div>
                     <div class="small">تومان</div>
                 </div>
-            </div><a class="btn btn-lg btn-danger" href="checkout">پرداخت</a>
+            </div><a class="btn btn-lg btn-danger" href="{{ route('checkout') }}">پرداخت</a>
         </div>
+        @else
+        <div class="nt-flex-start-center p-3">
+            <p class="fs-4 nt-fw-500">
+                سبد خرید شما خالی است
+            </p>
+        </div>
+        @endif
     </div>
 </div>
 <!-- ========================== end Offcanvas Cart ==========================-->
@@ -1200,7 +996,7 @@
                             aria-controls="offcanvasCart"><i class="ti ti-shopping-cart fs-1"></i>
                             <div class="nt-flex-center-center gap-3">
                                 <div class="nt-fw-500">سبد</div>
-                                <div class="badge bg-light text-dark">۶</div>
+                                <div class="badge bg-light text-dark">{{ $cartItemCount }}</div>
                             </div>
                         </button>
                     </nav>
