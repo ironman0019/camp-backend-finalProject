@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Services\Sms\SmsService;
+use App\Models\User\Wallet;
 
 class OTPLoginController extends Controller {
 
@@ -36,6 +37,13 @@ class OTPLoginController extends Controller {
         if (preg_match('/^09[0-9]{9}$/', $loginId)) {
             // It's a mobile number
             $user = User::firstOrCreate(['mobile' => $loginId]);
+
+            // Create wallet for user
+            if(!$user->wallet) {
+                Wallet::create([
+                    'user_id' => $user->id
+                ]);
+            }
     
             $otp = Otp::where('user_id', $user->id)->latest()->first();
             if ($otp && $otp->created_at->addMinutes(2)->isFuture()) {
@@ -65,6 +73,13 @@ class OTPLoginController extends Controller {
         } elseif (filter_var($loginId, FILTER_VALIDATE_EMAIL)) {
             // It's an email address
             $user = User::firstOrCreate(['email' => $loginId]);
+
+            // Create wallet for user
+            if(!$user->wallet) {
+                Wallet::create([
+                    'user_id' => $user->id
+                ]);
+            }
     
             // Generate OTP and send it via email
             $otpCode = rand(1000, 9999);
