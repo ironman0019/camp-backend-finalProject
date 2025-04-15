@@ -17,6 +17,9 @@
             @if(session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
             @endif
+            @if(session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
         </div>
     </div>
 
@@ -54,7 +57,7 @@
                 <div class="text-end mb-3">
                     <strong>{{ number_format($product->price) }} <small>تومان</small></strong>
                 </div>
-                <form action="#" method="POST">
+                <form action="{{ route('cart.add', $product->id) }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-danger w-100">افزودن به سبد خرید</button>
                 </form>
