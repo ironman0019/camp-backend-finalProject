@@ -24,6 +24,8 @@ Route::middleware(['auth'])->group(function() {
     // user dashbord routes
     Route::get('user/dashbord/index', [UserDashbordController::class, 'index'])->name('user.dashbord.index');
     Route::get('user/dashbord/user-info', [UserDashbordController::class, 'userInfo'])->name('user.dashbord.user-info');
+    Route::get('user/dashbord/user-orders', [UserDashbordController::class, 'userOrders'])->name('user.dashbord.user-orders');
+    Route::get('user/dashbord/user-orders-detail/{order}', [UserDashbordController::class, 'userOrdersDetail'])->name('user.dashbord.user-orders-detail');
     Route::get('user/profile/edit/{id}', [UserProfileController::class, 'edit'])->name('user.profile.edit');
     Route::put('user/profile/update/{user}', [UserProfileController::class, 'update'])->name('user.profile.update');
 
