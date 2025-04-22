@@ -23,5 +23,11 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Relation with peyment
+    public function peyment()
+    {
+        return $this->belongsTo(Peyment::class);
+    }
     
 }
