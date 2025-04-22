@@ -160,7 +160,7 @@
                                 <div class="fs-6">خرید</div><i class="ti ti-arrow-left fs-5"></i>
                             </div>
                         </div>
-                    </div><img src="https://picsum.photos/id/237/125" alt="" width="125" />
+                    </div><img src="{{ asset('assets/img/Lorem ipsum.jpg') }}" alt="" width="125" />
                 </a>
             </div>
             @endforeach
