@@ -30,7 +30,7 @@
                                             alt="" width="75" />
                                         <div class="nt-flex-column">
                                             <div class="nt-flex-start-center gap-3 nt-fw-500">
-                                                <div class="nt-fw-bolder">۰</div>
+                                                <div class="nt-fw-bolder">{{ $orders->where('order_status', 0)->count() }}</div>
                                                 <div class="fs-6">سفارش</div>
                                             </div>
                                             <div class="border-bottom border-2 border-warning py-2 nt-fw-500 text-warning">
@@ -42,11 +42,11 @@
                                             alt="" width="75" />
                                         <div class="nt-flex-column">
                                             <div class="nt-flex-start-center gap-3 nt-fw-500">
-                                                <div class="nt-fw-bolder">۴۴</div>
+                                                <div class="nt-fw-bolder">{{ $orders->where('order_status', 2)->count() }}</div>
                                                 <div class="fs-6">سفارش</div>
                                             </div>
                                             <div class="border-bottom border-2 border-success py-2 nt-fw-500 text-success">
-                                                تحویل شده</div>
+                                                پرداخت شده</div>
                                         </div>
                                     </a></div>
                                 <div class="col-12 col-md-4"><a class="link-body-emphasis nt-flex-start-center gap-4"
@@ -54,11 +54,11 @@
                                             alt="" width="75" />
                                         <div class="nt-flex-column">
                                             <div class="nt-flex-start-center gap-3 nt-fw-500">
-                                                <div class="nt-fw-bolder">۱۲</div>
+                                                <div class="nt-fw-bolder">{{ $orders->where('order_status', 3)->count() }}</div>
                                                 <div class="fs-6">سفارش</div>
                                             </div>
                                             <div class="border-bottom border-2 border-danger py-2 nt-fw-500 text-danger">
-                                                مرجوع شده</div>
+                                                نا موفق</div>
                                         </div>
                                     </a></div>
                             </div>
