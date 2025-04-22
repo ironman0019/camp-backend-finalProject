@@ -47,7 +47,7 @@
             <nav class="profile-sidebar-nav bg-body"><a
                     class="btn btn-lg nt-fw-500 profile-sidebar-link {{ Route::is('user.dashbord.index') ? 'active' : '' }}" " href="{{ route('user.dashbord.index') }}"><i
                         class="ti ti-home-2 fs-3"></i>خلاصه فعالیت ها</a><a
-                    class="btn btn-lg nt-fw-500 profile-sidebar-link" href="user-orders.html"><i
+                    class="btn btn-lg nt-fw-500 profile-sidebar-link {{ Route::is('user.dashbord.user-orders') ? 'active' : '' }}" href="{{ route('user.dashbord.user-orders') }}"><i
                         class="ti ti-shopping-bag fs-3"></i>سفارش ها</a><a
                     class="btn btn-lg nt-fw-500 profile-sidebar-link" href="user-lists.html"><i
                         class="ti ti-heart fs-3"></i>لیست های من</a><a
