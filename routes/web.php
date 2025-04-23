@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Ticket\TicketController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Admin\Market\ProductItemController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
+use App\Http\Controllers\Home\ProductDownloadController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('product/{product}/{slug}', [HomeController::class, 'product'])->name('product.show');
@@ -28,6 +29,10 @@ Route::middleware(['auth'])->group(function() {
     Route::get('user/dashbord/user-orders-detail/{order}', [UserDashbordController::class, 'userOrdersDetail'])->name('user.dashbord.user-orders-detail');
     Route::get('user/profile/edit/{id}', [UserProfileController::class, 'edit'])->name('user.profile.edit');
     Route::put('user/profile/update/{user}', [UserProfileController::class, 'update'])->name('user.profile.update');
+
+    // file download routes
+    Route::get('download-file/index/{product}/{order}', [ProductDownloadController::class, 'index'])->name('download-file.index');
+    Route::get('download-file/{type}/{id}/{order}', [ProductDownloadController::class, 'download'])->name('download-file')->middleware('signed');
 
     // cart routes
     // Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
