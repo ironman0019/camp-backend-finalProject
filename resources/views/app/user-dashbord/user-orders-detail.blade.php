@@ -207,7 +207,7 @@
                                                 </div>
                                                 @if($order->order_status == 2 && $order->peyment_status == 1)
                                                 <div class="card-footer bg-transparent border-0">
-                                                    <a href="#" class="btn btn-primary w-100">
+                                                    <a href="{{ route('download-file.index', [$orderItem->product, $order]) }}" class="btn btn-primary w-100">
                                                         دانلود
                                                     </a>
                                                 </div>
