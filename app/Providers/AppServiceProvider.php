@@ -41,10 +41,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('productCategories', $productCategories);
         });
 
-        View::composer('*', function($view) {
-            $tags = Tag::all();
-            $view->with('tags', $tags);
-        });
+
 
         View::composer('*', function($view) {
             $cart = null;
