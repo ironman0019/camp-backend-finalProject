@@ -2,7 +2,7 @@
     <section class="sidebar-container">
         <section class="sidebar-wrapper">
 
-            <a href="{{ route('admin.') }}" class="sidebar-link">
+            <a href="{{ route('admin.home') }}" class="sidebar-link">
                 <i class="fas fa-home"></i>
                 <span>خانه</span>
             </a>
