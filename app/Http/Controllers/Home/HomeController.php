@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Tag;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Market\Product;
@@ -13,7 +14,8 @@ class HomeController extends Controller
     {
         $mostViewedProducts = Product::where('marketable', 1)->orderBy('view_count', 'desc')->take(8)->get();
         $discountProducts = Product::where('marketable', 1)->where('discount_status', 1)->take(10)->get();
-        return view('index', compact('mostViewedProducts', 'discountProducts'));
+        $tags = Tag::all();
+        return view('index', compact('mostViewedProducts', 'discountProducts', 'tags'));
     }
 
     public function product(Product $product)
