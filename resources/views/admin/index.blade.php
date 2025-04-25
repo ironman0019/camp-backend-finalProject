@@ -5,165 +5,8 @@
 
 <section class="row">
 
-    <section class="col-lg-3 col-md-6 col-12">
-        <a href="#" class="text-decoration-none d-block mb-4">
-            <section class="card bg-custom-yellow text-white">
-                <section class="card-body">
-                    <section class="d-flex justify-content-between">
-                        <section class="info-box-body">
-                            <h5>30,200 تومان</h5>
-                            <p>سود خالص</p>
-                        </section>
-                        <section class="info-box-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </section>
-                    </section>
-                </section>
-                <section class="card-footer info-box-footer">
-                    <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                </section>
-            </section>
-        </a>
-    </section>
-    <section class="col-lg-3 col-md-6 col-12">
-        <a href="#" class="text-decoration-none d-block mb-4">
-            <section class="card bg-custom-green text-white">
-                <section class="card-body">
-                    <section class="d-flex justify-content-between">
-                        <section class="info-box-body">
-                            <h5>30,200 تومان</h5>
-                            <p>سود خالص</p>
-                        </section>
-                        <section class="info-box-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </section>
-                    </section>
-                </section>
-                <section class="card-footer info-box-footer">
-                    <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                </section>
-            </section>
-        </a>
-    </section>
-    <section class="col-lg-3 col-md-6 col-12">
-        <a href="#" class="text-decoration-none d-block mb-4">
-            <section class="card bg-custom-pink text-white">
-                <section class="card-body">
-                    <section class="d-flex justify-content-between">
-                        <section class="info-box-body">
-                            <h5>30,200 تومان</h5>
-                            <p>سود خالص</p>
-                        </section>
-                        <section class="info-box-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </section>
-                    </section>
-                </section>
-                <section class="card-footer info-box-footer">
-                    <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                </section>
-            </section>
-        </a>
-    </section>
-    <section class="col-lg-3 col-md-6 col-12">
-        <a href="#" class="text-decoration-none d-block mb-4">
-            <section class="card bg-custom-blue text-white">
-                <section class="card-body">
-                    <section class="d-flex justify-content-between">
-                        <section class="info-box-body">
-                            <h5>30,200 تومان</h5>
-                            <p>سود خالص</p>
-                        </section>
-                        <section class="info-box-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </section>
-                    </section>
-                </section>
-                <section class="card-footer info-box-footer">
-                    <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                </section>
-            </section>
-        </a>
-    </section>
-    <section class="col-lg-3 col-md-6 col-12">
-        <a href="#" class="text-decoration-none d-block mb-4">
-            <section class="card bg-danger text-white">
-                <section class="card-body">
-                    <section class="d-flex justify-content-between">
-                        <section class="info-box-body">
-                            <h5>30,200 تومان</h5>
-                            <p>سود خالص</p>
-                        </section>
-                        <section class="info-box-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </section>
-                    </section>
-                </section>
-                <section class="card-footer info-box-footer">
-                    <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                </section>
-            </section>
-        </a>
-    </section>
-    <section class="col-lg-3 col-md-6 col-12">
-        <a href="#" class="text-decoration-none d-block mb-4">
-            <section class="card bg-success text-white">
-                <section class="card-body">
-                    <section class="d-flex justify-content-between">
-                        <section class="info-box-body">
-                            <h5>30,200 تومان</h5>
-                            <p>سود خالص</p>
-                        </section>
-                        <section class="info-box-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </section>
-                    </section>
-                </section>
-                <section class="card-footer info-box-footer">
-                    <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                </section>
-            </section>
-        </a>
-    </section>
-    <section class="col-lg-3 col-md-6 col-12">
-        <a href="#" class="text-decoration-none d-block mb-4">
-            <section class="card bg-warning text-white">
-                <section class="card-body">
-                    <section class="d-flex justify-content-between">
-                        <section class="info-box-body">
-                            <h5>30,200 تومان</h5>
-                            <p>سود خالص</p>
-                        </section>
-                        <section class="info-box-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </section>
-                    </section>
-                </section>
-                <section class="card-footer info-box-footer">
-                    <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                </section>
-            </section>
-        </a>
-    </section>
-    <section class="col-lg-3 col-md-6 col-12">
-        <a href="#" class="text-decoration-none d-block mb-4">
-            <section class="card bg-primary text-white">
-                <section class="card-body">
-                    <section class="d-flex justify-content-between">
-                        <section class="info-box-body">
-                            <h5>30,200 تومان</h5>
-                            <p>سود خالص</p>
-                        </section>
-                        <section class="info-box-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </section>
-                    </section>
-                </section>
-                <section class="card-footer info-box-footer">
-                    <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                </section>
-            </section>
-        </a>
+    <section class="col-lg-12 col-md-6 col-12">
+        <div id="chart-container"></div>
     </section>
 
 </section>
@@ -200,4 +43,62 @@
     </section>
 </section>
 
+@endsection
+
+@section('styles')
+@parent
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script>
+    $(document).ready(function() {
+        $.get("{{ url('admin/sale-stats') }}", function(data) {
+            Highcharts.chart('chart-container', {
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 45
+                    }
+                },
+                title: {
+                    text: 'آمار فروش'
+                },
+                plotOptions: {
+                    pie: {
+                        innerSize: 100,
+                        depth: 45,
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function () {
+                            return this.point.name + ': ' + Highcharts.numberFormat(this.y, 0, '.', ',') + ' تومان';
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    name: 'فروش',
+                    colorByPoint: true,
+                    data: [{
+                            name: 'جمع فروش امروز',
+                            y: data.today
+                        },
+                        {
+                            name: 'جمع فروش این ماه',
+                            y: data.thisMonth
+                        },
+                        {
+                            name: 'جمع فروش این سال',
+                            y: data.thisYear
+                        },
+                        {
+                            name: 'جمع فروش کل',
+                            y: data.total
+                        }
+                    ]
+                }]
+            });
+        });
+    });
+</script>
 @endsection
