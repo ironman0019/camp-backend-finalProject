@@ -4,9 +4,13 @@
 }
 
 * {
-    direction: rtl;
+    /* direction: rtl; */
     text-align: right;
     font-family: IRANSans;
+}
+
+#chart-container {
+    margin-top: 5px;
 }
 
 .swal2-html-container{
