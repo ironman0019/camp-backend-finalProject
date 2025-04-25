@@ -55,7 +55,8 @@ require __DIR__.'/auth.php';
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function() {
 
-    Route::get('/', DashbordController::class);
+    Route::get('/', [DashbordController::class, 'index'])->name('home');
+    Route::get('/sale-stats', [DashbordController::class, 'getSaleStats']);
 
     Route::prefix('setting')->name('setting.')->group(function() {
         //TODO
