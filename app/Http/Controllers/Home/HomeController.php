@@ -7,6 +7,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Market\Product;
 use App\Http\Controllers\Controller;
+use App\Models\Market\Order;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,12 @@ class HomeController extends Controller
         $relatedProducts = Product::where('marketable', 1)->where('product_category_id', $product->product_category_id)->inRandomOrder()->take(8)->get()->except($product->id);
 
         return view('app.product', compact('product', 'relatedProducts', 'comments'));
+    }
+
+    public function search()
+    {
+        $products = Product::filter(request(['search', 'product-category', 'marketable', 'image-products', 'start-price', 'end-price', 'sort', 'tag']))->paginate(10); 
+        return view('app.search', compact('products'));
     }
 
     
