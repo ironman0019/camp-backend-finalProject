@@ -17,6 +17,7 @@ use App\Http\Controllers\Home\ProductDownloadController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('product/{product}/{slug}', [HomeController::class, 'product'])->name('product.show');
+Route::get('search', [HomeController::class, 'search'])->name('search');
 
 
 Route::middleware(['auth'])->group(function() {
