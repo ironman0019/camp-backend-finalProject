@@ -31,9 +31,9 @@
             <div class="px-2">منو و جستجو</div>
           </button>
           <!-- home-->
-          <button class="btn btn-dark rounded-pill" type="button"> <i class="ti ti-home fs-1"></i></button>
+          <a class="btn btn-dark rounded-pill" href="{{ route('home') }}"> <i class="ti ti-home fs-1"></i></a>
           <!-- user-->
-          <button class="btn btn-dark rounded-pill" type="button"> <i class="ti ti-user fs-1"></i></button>
+          <a class="btn btn-dark rounded-pill" href="{{ route('user.dashbord.index') }}"> <i class="ti ti-user fs-1"></i></a>
           <!-- cart-->
           <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart"> <i class="ti ti-shopping-cart fs-1"></i></button>
         </nav>
