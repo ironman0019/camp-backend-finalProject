@@ -149,9 +149,9 @@
             <!-- item-->
             @foreach($productCategories as $productCategory)
             <div class="col-12 col-md-6 col-lg-4">
-                <a class="index-buttonLink btn btn-light" href="#">
+                <a class="index-buttonLink btn btn-light" href="{{ route('search', ['product-category' => $productCategory->name]) }}">
                     <div class="nt-flex-column">
-                        <div class="fs-4 nt-fw-bold mb-4">پرفروش ترین های</div>
+                        <div class="fs-4 nt-fw-bold mb-4">محصولات دسته بندی</div>
                         <div class="nt-flex-start-center mb-3"><i class="ti ti-caret-left-filled fs-3 text-primary"></i>
                             <div class="fs-2">{{ $productCategory->name }}</div>
                         </div>
@@ -177,7 +177,7 @@
                 <div class="swiper-slide h-auto">
                     <a
                         class="h-100 link-body-emphasis nt-flex-column-center-center border bg-body rounded-5 p-3"
-                        href="#">
+                        href="{{ route('search', ['tag' => $tag->name]) }}">
                         <div class="fs-4 nt-fw-500">{{ $tag->name }}</div>
                     </a>
                 </div>
