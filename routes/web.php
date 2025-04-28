@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Admin\Market\ProductItemController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Home\ProductDownloadController;
+use App\Http\Controllers\Home\UserTicketController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('product/{product}/{slug}', [HomeController::class, 'product'])->name('product.show');
@@ -28,6 +29,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('user/dashbord/user-info', [UserDashbordController::class, 'userInfo'])->name('user.dashbord.user-info');
     Route::get('user/dashbord/user-orders', [UserDashbordController::class, 'userOrders'])->name('user.dashbord.user-orders');
     Route::get('user/dashbord/user-orders-detail/{order}', [UserDashbordController::class, 'userOrdersDetail'])->name('user.dashbord.user-orders-detail');
+    Route::get('user/dashbord/user-ticket', [UserTicketController::class, 'index'])->name('user.dashbord.ticket.index');
+    Route::post('user/dashbord/user-ticket', [UserTicketController::class, 'store'])->name('user.dashbord.ticket.store');
     Route::get('user/profile/edit/{id}', [UserProfileController::class, 'edit'])->name('user.profile.edit');
     Route::put('user/profile/update/{user}', [UserProfileController::class, 'update'])->name('user.profile.update');
 
