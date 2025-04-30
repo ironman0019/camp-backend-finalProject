@@ -51,7 +51,7 @@
                         class="ti ti-shopping-bag fs-3"></i>سفارش ها</a><a
                     class="btn btn-lg nt-fw-500 profile-sidebar-link" href="user-lists.html"><i
                         class="ti ti-heart fs-3"></i>لیست های من</a><a
-                    class="btn btn-lg nt-fw-500 profile-sidebar-link" href="user-comments.html"><i
+                    class="btn btn-lg nt-fw-500 profile-sidebar-link {{ Route::is('user.dashbord.user-comments') ? 'active' : '' }}" href="{{ route('user.dashbord.user-comments') }}"><i
                         class="ti ti-message fs-3"></i>دیدگاه ها</a><a
                     class="btn btn-lg nt-fw-500 profile-sidebar-link {{ Route::is('user.dashbord.ticket.index') ? 'active' : '' }}" href="{{ route('user.dashbord.ticket.index') }}"><i
                         class="ti ti-ticket fs-3"></i>تیکت ها</a><a
