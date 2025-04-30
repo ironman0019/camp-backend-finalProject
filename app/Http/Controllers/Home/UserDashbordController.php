@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Market\Order;
+use Illuminate\Support\Facades\Auth;
 
 class UserDashbordController extends Controller
 {
@@ -36,6 +38,12 @@ class UserDashbordController extends Controller
     public function userOrdersDetail(Order $order)
     {
         return view('app.user-dashbord.user-orders-detail', compact('order'));
+    }
+
+    public function userComments()
+    {
+        $comments = Comment::with('product')->latest()->where('user_id', auth()->user()->id)->whereNull('parent_id')->paginate(5);
+        return view('app.user-dashbord.user-comments', compact('comments'));
     }
 
 }
