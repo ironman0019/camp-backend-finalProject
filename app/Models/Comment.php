@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Market\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -25,6 +26,11 @@ class Comment extends Model
     public function children()
     {
         return $this->hasMany($this, 'parent_id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
     
 }
