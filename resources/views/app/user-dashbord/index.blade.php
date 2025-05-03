@@ -20,13 +20,13 @@
                             <div class="nt-flex-between-center mb-5">
                                 <div class="nt-flex-start-center"><i class="ti ti-shopping-bag fs-3"></i>
                                     <div class="fs-4 nt-fw-500">سفارش های من</div>
-                                </div><a class="icon-link" href="#">مشاهده همه<i
+                                </div><a class="icon-link" href="{{ route('user.dashbord.user-orders') }}">مشاهده همه<i
                                         class="ti ti-chevron-left"></i></a>
                             </div>
                             <!-- items-->
                             <div class="row">
                                 <div class="col-12 col-md-4"><a class="link-body-emphasis nt-flex-start-center gap-4"
-                                        href="#"><img src="{{ asset('assets/img/pages/user-profile/packages/package-pen.png') }}"
+                                        href="/user/dashbord/user-orders#userOrders-current-tab-pane"><img src="{{ asset('assets/img/pages/user-profile/packages/package-pen.png') }}"
                                             alt="" width="75" />
                                         <div class="nt-flex-column">
                                             <div class="nt-flex-start-center gap-3 nt-fw-500">
@@ -38,7 +38,7 @@
                                         </div>
                                     </a></div>
                                 <div class="col-12 col-md-4"><a class="link-body-emphasis nt-flex-start-center gap-4"
-                                        href="#"><img src="{{ asset('assets/img/pages/user-profile/packages/package-check.png') }}"
+                                        href="/user/dashbord/user-orders#userOrders-delivered-tab"><img src="{{ asset('assets/img/pages/user-profile/packages/package-check.png') }}"
                                             alt="" width="75" />
                                         <div class="nt-flex-column">
                                             <div class="nt-flex-start-center gap-3 nt-fw-500">
@@ -50,7 +50,7 @@
                                         </div>
                                     </a></div>
                                 <div class="col-12 col-md-4"><a class="link-body-emphasis nt-flex-start-center gap-4"
-                                        href="#"><img src="{{ asset('assets/img/pages/user-profile/packages/package-minus.png') }}"
+                                        href="/user/dashbord/user-orders#userOrders-canceled-tab"><img src="{{ asset('assets/img/pages/user-profile/packages/package-minus.png') }}"
                                             alt="" width="75" />
                                         <div class="nt-flex-column">
                                             <div class="nt-flex-start-center gap-3 nt-fw-500">
@@ -69,7 +69,7 @@
                             <div class="nt-flex-between-center mb-5">
                                 <div class="nt-flex-start-center"><i class="ti ti-heart fs-3"></i>
                                     <div class="fs-4 nt-fw-500">از لیست‌های شما</div>
-                                </div><a class="icon-link" href="#">مشاهده همه<i
+                                </div><a class="icon-link" href="{{ route('user.dashbord.user-favourites') }}">مشاهده همه<i
                                         class="ti ti-chevron-left"></i></a>
                             </div>
                             <!-- swiper-->
@@ -77,126 +77,35 @@
                                 data-swiper-options="{ &quot;slidesPerView&quot;:1, &quot;spaceBetween&quot;:10, &quot;breakpoints&quot;:{&quot;320&quot;:{&quot;slidesPerView&quot;:2,&quot;spaceBetween&quot;:20},&quot;480&quot;:{&quot;slidesPerView&quot;:3,&quot;spaceBetween&quot;:30},&quot;640&quot;:{&quot;slidesPerView&quot;:4,&quot;spaceBetween&quot;:40}} }">
                                 <div class="swiper-wrapper">
                                     <!-- item-->
+                                    @forelse($favouriteProducts as $favouriteProduct)
                                     <div class="swiper-slide h-auto">
                                         <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/1.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل 14
-                                                    Ultra 5G دو سیم کارت ظرفیت 512 گیگابایت و رم 16 گیگابایت - پک گلوبال
+                                                src="{{ $favouriteProduct->image }}" alt="{{ $favouriteProduct->name }}" /><a
+                                                class="card-body link-body-emphasis link-opacity-75-hover" href="{{ route('product.show', [$favouriteProduct, $favouriteProduct->slug]) }}">
+                                                <div class="card-title nt-clamp-3 nt-fw-500">
+                                                    {{ $favouriteProduct->name }}
                                                 </div>
                                             </a>
                                             <div class="card-footer border-0 bg-transparent">
                                                 <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۷۵,۴۰۰,۰۰۰</div>
+                                                    <div class="fs-5">{{ number_format($favouriteProduct->price) }}</div>
                                                     <div class="small">تومان</div>
                                                 </div>
                                                 <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
+                                                    <form action="{{ route('cart.add', $favouriteProduct->id) }}" method="post">
+                                                        @csrf
+                                                        <button class="btn btn-outline-primary" type="submit"> <i
                                                             class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- item-->
-                                    <div class="swiper-slide h-auto">
-                                        <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/2.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل 14 5G
-                                                    دو سیم کارت ظرفیت 512 گیگابایت و رم 12 گیگابایت - گلوبال</div>
-                                            </a>
-                                            <div class="card-footer border-0 bg-transparent">
-                                                <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۴۹,۸۹۹,۰۰۰</div>
-                                                    <div class="small">تومان</div>
-                                                </div>
-                                                <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
-                                                            class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    @empty
+                                    <div>
+                                        <p class="text-center fw-bold">محصولی در لیست شما وجود ندارد</p>
                                     </div>
-                                    <!-- item-->
-                                    <div class="swiper-slide h-auto">
-                                        <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/3.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل 14T
-                                                    Pro دو سیم کارت ظرفیت 1 ترابایت و رم 12 گیگابایت</div>
-                                            </a>
-                                            <div class="card-footer border-0 bg-transparent">
-                                                <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۴۵,۵۰۰,۰۰۰</div>
-                                                    <div class="small">تومان</div>
-                                                </div>
-                                                <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
-                                                            class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item-->
-                                    <div class="swiper-slide h-auto">
-                                        <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/4.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل 14T
-                                                    Pro دو سیم کارت ظرفیت 512 گیگابایت و رم 12 گیگابایت</div>
-                                            </a>
-                                            <div class="card-footer border-0 bg-transparent">
-                                                <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۴۲,۷۹۹,۰۰۰</div>
-                                                    <div class="small">تومان</div>
-                                                </div>
-                                                <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
-                                                            class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item-->
-                                    <div class="swiper-slide h-auto">
-                                        <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/5.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل Poco
-                                                    F6 Pro دو سیم کارت ظرفیت 1 ترابایت و رم 16 گیگابایت - پک گلوبال</div>
-                                            </a>
-                                            <div class="card-footer border-0 bg-transparent">
-                                                <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۳۹,۷۹۰,۰۰۰</div>
-                                                    <div class="small">تومان</div>
-                                                </div>
-                                                <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
-                                                            class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item-->
-                                    <div class="swiper-slide h-auto">
-                                        <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/6.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل 13T
-                                                    Pro 5G دو سیم کارت ظرفیت 512 گیگابایت و رم 12 گیگابایت</div>
-                                            </a>
-                                            <div class="card-footer border-0 bg-transparent">
-                                                <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۳۵,۴۰۰,۰۰۰</div>
-                                                    <div class="small">تومان</div>
-                                                </div>
-                                                <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
-                                                            class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforelse
                                 </div>
                                 <!-- swiper buttons-->
                                 <div class="swiper-button-prev swiper-button-circle"></div>
@@ -218,126 +127,31 @@
                                 <div class="swiper-wrapper">
                                     <!-- Slide-->
                                     <!-- item-->
+                                    @foreach($frequentProducts as $frequentProduct)
                                     <div class="swiper-slide h-auto">
                                         <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/6.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل 13T
-                                                    Pro 5G دو سیم کارت ظرفیت 512 گیگابایت و رم 12 گیگابایت</div>
-                                            </a>
-                                            <div class="card-footer border-0 bg-transparent">
-                                                <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۳۵,۴۰۰,۰۰۰</div>
-                                                    <div class="small">تومان</div>
-                                                </div>
-                                                <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
-                                                            class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item-->
-                                    <div class="swiper-slide h-auto">
-                                        <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/5.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل Poco
-                                                    F6 Pro دو سیم کارت ظرفیت 1 ترابایت و رم 16 گیگابایت - پک گلوبال</div>
-                                            </a>
-                                            <div class="card-footer border-0 bg-transparent">
-                                                <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۳۹,۷۹۰,۰۰۰</div>
-                                                    <div class="small">تومان</div>
-                                                </div>
-                                                <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
-                                                            class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item-->
-                                    <div class="swiper-slide h-auto">
-                                        <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/4.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل 14T
-                                                    Pro دو سیم کارت ظرفیت 512 گیگابایت و رم 12 گیگابایت</div>
-                                            </a>
-                                            <div class="card-footer border-0 bg-transparent">
-                                                <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۴۲,۷۹۹,۰۰۰</div>
-                                                    <div class="small">تومان</div>
-                                                </div>
-                                                <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
-                                                            class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item-->
-                                    <div class="swiper-slide h-auto">
-                                        <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/3.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل 14T
-                                                    Pro دو سیم کارت ظرفیت 1 ترابایت و رم 12 گیگابایت</div>
-                                            </a>
-                                            <div class="card-footer border-0 bg-transparent">
-                                                <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۴۵,۵۰۰,۰۰۰</div>
-                                                    <div class="small">تومان</div>
-                                                </div>
-                                                <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
-                                                            class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item-->
-                                    <div class="swiper-slide h-auto">
-                                        <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/2.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل 14 5G
-                                                    دو سیم کارت ظرفیت 512 گیگابایت و رم 12 گیگابایت - گلوبال</div>
-                                            </a>
-                                            <div class="card-footer border-0 bg-transparent">
-                                                <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۴۹,۸۹۹,۰۰۰</div>
-                                                    <div class="small">تومان</div>
-                                                </div>
-                                                <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
-                                                            class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- item-->
-                                    <div class="swiper-slide h-auto">
-                                        <div class="card border-0 h-100"><img class="card-img-top"
-                                                src="img/pages/user-profile/1.jpg" alt="" /><a
-                                                class="card-body link-body-emphasis link-opacity-75-hover" href="#">
-                                                <div class="card-title nt-clamp-3 nt-fw-500">گوشی موبایل شیائومی مدل 14
-                                                    Ultra 5G دو سیم کارت ظرفیت 512 گیگابایت و رم 16 گیگابایت - پک گلوبال
+                                                src="{{ $frequentProduct->image }}" alt="{{ $frequentProduct->name }}" /><a
+                                                class="card-body link-body-emphasis link-opacity-75-hover" href="{{ route('product.show', [$frequentProduct->id, $frequentProduct->slug]) }}">
+                                                <div class="card-title nt-clamp-3 nt-fw-500">
+                                                    {{ $frequentProduct->name }}
                                                 </div>
                                             </a>
                                             <div class="card-footer border-0 bg-transparent">
                                                 <div class="nt-flex-end-center nt-fw-700 mb-3">
-                                                    <div class="fs-5">۷۵,۴۰۰,۰۰۰</div>
+                                                    <div class="fs-5">{{ number_format($frequentProduct->price) }}</div>
                                                     <div class="small">تومان</div>
                                                 </div>
                                                 <div class="d-grid">
-                                                    <button class="btn btn-outline-primary" type="button"> <i
+                                                    <form action="{{ route('cart.add', $frequentProduct->id) }}" method="post">
+                                                        @csrf
+                                                        <button class="btn btn-outline-primary" type="submit"> <i
                                                             class="ti ti-shopping-cart fs-5"></i>افزودن به سبد</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
                                 <!-- swiper buttons-->
                                 <div class="swiper-button-prev swiper-button-circle"></div>
