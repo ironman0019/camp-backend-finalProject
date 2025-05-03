@@ -3,9 +3,11 @@
 namespace App\Models\Market;
 
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
 {
@@ -43,6 +45,12 @@ class Product extends Model
     public function productItems()
     {
         return $this->hasMany(ProductItem::class);
+    }
+
+    // Relation with favoured users
+    public function favouredUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'favourite_products');
     }
 
     // Search filter
