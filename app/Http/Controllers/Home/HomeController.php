@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Market\Product;
 use App\Http\Controllers\Controller;
 use App\Models\Market\Order;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -34,6 +35,21 @@ class HomeController extends Controller
     {
         $products = Product::filter(request(['search', 'product-category', 'marketable', 'image-products', 'start-price', 'end-price', 'sort', 'tag']))->paginate(10); 
         return view('app.search', compact('products'));
+    }
+
+
+    public function addToFavourite(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'exists:products,id'
+        ]);
+
+        $user = Auth::user();
+        if (!$user->favouriteProducts()->where('product_id', $request->input('product_id'))->exists()) {
+            $user->favouriteProducts()->attach($request->input('product_id'));
+        }
+
+        return back()->with('success', 'محصول به علاقه مندی اضافه شد');
     }
 
     
