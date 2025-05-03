@@ -30,6 +30,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('user/dashbord/user-orders', [UserDashbordController::class, 'userOrders'])->name('user.dashbord.user-orders');
     Route::get('user/dashbord/user-orders-detail/{order}', [UserDashbordController::class, 'userOrdersDetail'])->name('user.dashbord.user-orders-detail');
     Route::get('user/dashbord/comments', [UserDashbordController::class, 'userComments'])->name('user.dashbord.user-comments');
+    Route::get('user/dashbord/user-favourites', [UserDashbordController::class, 'userFavourites'])->name('user.dashbord.user-favourites');
+    Route::delete('user/dashbord/remove-from-favourite/{product}', [UserDashbordController::class, 'removeFromFavourite'])->name('user.dashbord.remove-from-favourite');
     Route::get('user/dashbord/user-ticket', [UserTicketController::class, 'index'])->name('user.dashbord.ticket.index');
     Route::post('user/dashbord/user-ticket', [UserTicketController::class, 'store'])->name('user.dashbord.ticket.store');
     Route::get('user/profile/edit/{id}', [UserProfileController::class, 'edit'])->name('user.profile.edit');
@@ -50,6 +52,9 @@ Route::middleware(['auth'])->group(function() {
 
     // order routes
     Route::post('order/store', [OrderController::class, 'orderStore'])->name('order.store');
+
+    // add to favourite route
+    Route::get('add_to_favourite', [HomeController::class, 'addToFavourite'])->name('product.add-to-favourite');
 
 });
 
