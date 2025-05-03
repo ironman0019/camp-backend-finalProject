@@ -37,7 +37,7 @@
                 <h4>{{ $product->name }}</h4>
                 <p class="text-muted mb-1"><i class="fas fa-shield-alt me-2"></i>گارانتی اصالت و سلامت فیزیکی کالا</p>
                 <p class="text-success mb-1"><i class="fas fa-store-alt me-2"></i>کالا موجود در انبار</p>
-                <a class="btn btn-outline-danger btn-sm mb-3" href="#"><i class="fas fa-heart me-1"></i>افزودن به علاقه‌مندی</a>
+                <a class="btn btn-outline-danger btn-sm mb-3" href="{{ route('product.add-to-favourite', ['product_id' => $product->id]) }}"><i class="fas fa-heart me-1"></i>افزودن به علاقه‌مندی</a>
 
 
                 <div class="alert alert-info small">
