@@ -7,6 +7,7 @@ use Morilog\Jalali\Jalalian;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Market\Order;
+use App\Models\Market\Product;
 use Illuminate\Support\Facades\Auth;
 
 class UserDashbordController extends Controller
@@ -44,6 +45,23 @@ class UserDashbordController extends Controller
     {
         $comments = Comment::with('product')->latest()->where('user_id', auth()->user()->id)->whereNull('parent_id')->paginate(5);
         return view('app.user-dashbord.user-comments', compact('comments'));
+    }
+
+    public function userFavourites()
+    {
+        $products = auth()->user()->favouriteProducts()->get();
+        return view('app.user-dashbord.user-favourites', compact('products'));
+    }
+
+    public function removeFromFavourite(Product $product)
+    {
+        $user = Auth::user();
+        if ($user->favouriteProducts()->where('product_id', $product->id)->exists()) {
+            $user->favouriteProducts()->detach($product->id);
+        }
+
+        return back()->with('success', 'محصول از لیست حذف شد');
+
     }
 
 }
