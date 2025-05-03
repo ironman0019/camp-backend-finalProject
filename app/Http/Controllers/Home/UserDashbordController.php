@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Home;
 
-use Illuminate\Http\Request;
-use Morilog\Jalali\Jalalian;
-use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Market\Order;
+use Illuminate\Http\Request;
+use Morilog\Jalali\Jalalian;
 use App\Models\Market\Product;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class UserDashbordController extends Controller
@@ -15,7 +16,25 @@ class UserDashbordController extends Controller
     public function index()
     {
         $orders = Order::where('user_id', auth()->user()->id)->get();
-        return view('app.user-dashbord.index', compact('orders'));
+        $favouriteProducts = Auth::user()->favouriteProducts()->get();
+
+        $frequentProducts = DB::table('order_items')
+        ->join('orders', 'order_items.order_id', '=', 'orders.id')
+        ->join('products', 'order_items.product_id', '=', 'products.id')
+        ->where('orders.user_id', auth()->user()->id)
+        ->select(
+            'products.id',
+            'products.name',
+            'products.price',
+            'products.image',
+            'products.slug',
+            DB::raw('count(*) as total_orders')
+        )
+        ->groupBy('products.id', 'products.name', 'products.price', 'products.image', 'products.slug')
+        ->orderByDesc('total_orders')
+        ->get();
+
+        return view('app.user-dashbord.index', compact('orders', 'favouriteProducts', 'frequentProducts'));
     }
 
     public function userInfo()
