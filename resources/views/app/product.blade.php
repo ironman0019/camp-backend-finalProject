@@ -106,7 +106,7 @@
                     <tr><th>برچسب‌ها</th>
                         <td>
                             @foreach($product->tags as $tag)
-                            <a href="#">
+                            <a href="{{ route('search', ['tag' => $tag->name]) }}">
                                 <span class="badge bg-secondary small">{{ $tag->name }}</span>
                             </a>
                             @endforeach
