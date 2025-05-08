@@ -209,6 +209,7 @@ return [
         'amount_type' => 'نوع تخفیف',
         'discount_percent' => 'درصد تخفیف',
         'file_original_name' => 'اسم اصلی فایل',
-        'login_id' => 'شماره موبایل یا پست الکترونیک'
+        'login_id' => 'شماره موبایل یا پست الکترونیک',
+        'peyment_type' => 'روش پرداخت'
     ],
 ];
