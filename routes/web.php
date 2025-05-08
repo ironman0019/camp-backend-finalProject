@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Content\BannerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\HomeController;
@@ -74,6 +75,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
 
     Route::prefix('content')->name('content.')->group(function() {
         //TODO
+        Route::resource('banner', BannerController::class);
     });
 
     Route::prefix('tickets')->name('tickets.')->group(function() {
