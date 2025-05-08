@@ -67,7 +67,7 @@
                 <span>منو ها</span>
             </a>
 
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.content.banner.index') }}" class="sidebar-link">
                 <i class="fas fa-chalkboard"></i>
                 <span>بنر های اصلی</span>
             </a>
