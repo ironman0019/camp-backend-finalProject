@@ -17,17 +17,15 @@
     <section class="swiper"
         data-swiper-options="{&quot;loop&quot;:true, &quot;spaceBetween&quot;:0, &quot;autoHeight&quot;:true, &quot;autoplay&quot;:{&quot;delay&quot;: 5000}, &quot;speed&quot;:300 }"
         style="--swiper-theme-color: var(--bs-primary);">
-        <div class="swiper-wrapper"><a class="swiper-slide rounded" href="#">
+        <div class="swiper-wrapper">
+            @foreach($slideBanners as $slideBanner)
+            <a class="swiper-slide rounded" href="{{ $slideBanner->url }}">
                 <picture>
-                    <source srcset="{{ asset('assets/img/pages/index/slider/1.jpg') }}" media="(min-width: 850px)" /><img class="swiper-slide-img"
-                        src="" alt="" />
-                </picture>
-            </a><a class="swiper-slide rounded" href="#">
-                <picture>
-                    <source srcset="{{ asset('assets/img/pages/index/slider/2.jpg') }}" media="(min-width: 850px)" /><img
-                        class="swiper-slide-img" src="" alt="" />
+                    <source srcset="{{ $slideBanner->image }}" media="(min-width: 850px)" /><img class="swiper-slide-img"
+                        src="" alt="" width="100%" height="600px"/>
                 </picture>
             </a>
+            @endforeach
         </div>
         <div class="swiper-pagination swiper-pagination-center bg-body rounded rounded-bottom-0 bottom-0"></div>
         <div class="swiper-button-prev"></div>
@@ -189,18 +187,14 @@
     <!-- cols-->
     <section class="container-fluid wrapper mb-5">
         <div class="row g-4">
-            <div class="col-12 col-md-6"><a href="#"> <img class="rounded-5"
-                        src="{{ asset('assets/img/pages/index/2cols/1.jpg') }}" alt="" /></a></div>
-            <div class="col-12 col-md-6"><a href="#"> <img class="rounded-5"
-                        src="{{ asset('assets/img/pages/index/2cols/2.jpg') }}" alt="" /></a></div>
-            <div class="col-6 col-md-3"><a href="#"> <img class="rounded-5"
-                        src="{{ asset('assets/img/pages/index/cards/1.jpg') }}" alt="" /></a></div>
-            <div class="col-6 col-md-3"><a href="#"> <img class="rounded-5"
-                        src="{{ asset('assets/img/pages/index/cards/2.jpg') }}" alt="" /></a></div>
-            <div class="col-6 col-md-3"><a href="#"> <img class="rounded-5"
-                        src="{{ asset('assets/img/pages/index/cards/3.jpg') }}" alt="" /></a></div>
-            <div class="col-6 col-md-3"><a href="#"> <img class="rounded-5"
-                        src="{{ asset('assets/img/pages/index/cards/4.jpg') }}" alt="" /></a></div>
+            <div class="col-12 col-md-6"><a href="{{ $bottomTopLeftBanner->url }}"> <img class="rounded-5"
+                        src="{{ $bottomTopLeftBanner->image }}" alt="" /></a></div>
+            <div class="col-12 col-md-6"><a href="{{ $bottomTopRightBanner->url }}"> <img class="rounded-5"
+                        src="{{ $bottomTopRightBanner->image }}" alt="" /></a></div>
+            @foreach ($bottomBanners as $bottomBanner)
+            <div class="col-6 col-md-3"><a href="{{ $bottomBanner->url }}"> <img class="rounded-5"
+                src="{{ $bottomBanner->image}}" alt="" /></a></div>
+            @endforeach
         </div>
     </section>
 
