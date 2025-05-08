@@ -8,14 +8,14 @@
     <section class="main-body-container-header d-flex justify-content-between align-items-center">
         <div>
             <h5>
-                بنر های اصلی سایت (show cases)
+                بنر های اصلی سایت 
             </h5>
             <p>
                 در این بخش اطلاعاتی در مورد بنر ها به شما داده می شود
             </p>
         </div>
         <div>
-            <a href="#" class="btn btn-success">ساخت</a>
+            <a href="{{ route('admin.content.banner.create') }}" class="btn btn-success">ساخت</a>
         </div>
     </section>
     <section class="body-content">
@@ -32,23 +32,35 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach($banners as $banner)
                 <tr>
-                    <th>#</th>
+                    <th>{{ $loop->iteration }}</th>
                     <td>
-                        <img src="#" alt="image" class="img-fluid" width="100" height="100">
+                        <img src="{{ asset($banner->image) }}" alt="image" class="img-fluid" width="100" height="100">
                     </td>
-                    <td>#</td>
+                    <td>{{ $banner->url }}</td>
                     <td>
-                        #
+                        @if ($banner->position == 0)
+                        <span>اسلاید شو</span>
+                        @elseif($banner->position == 1)
+                        <span>پایین راست</span>
+                        @elseif($banner->position == 2)
+                        <span>پایین چپ</span>
+                        @else
+                        <span>پایین</span>
+                        @endif
                     </td>
                     <td>
-                        #
+                        @if ($banner->status)
+                        <span> فعال</span>
+                        @else
+                        <span>غیر فعال</span>
+                        @endif
                     </td>
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="mx-2">
-                                <form action="#" method="POST">
+                                <form action="{{ route('admin.content.banner.destroy', $banner) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -58,7 +70,7 @@
                                 </form>
                             </div>
                             <div class="mx-2">
-                                <a href="#"
+                                <a href="{{ route('admin.content.banner.edit', $banner) }}"
                                     class="text-warning">
                                     <i class="fa fa-edit"></i>
                                 </a>
@@ -66,9 +78,7 @@
                         </div>
                     </td>
                 </tr>
-                
-
-
+                @endforeach
             </tbody>
         </table>
 
