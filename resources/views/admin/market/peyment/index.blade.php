@@ -22,7 +22,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">مبلغ</th>
-                    <th scope="col">آیدی یا شماره موبایل</th>
+                    <th scope="col">ایمیل یا شماره موبایل</th>
                     <th scope="col">وضعیت</th>
                     <th scope="col">درگاه</th>
                     <th scope="col">کد پرداخت</th>
@@ -31,26 +31,32 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach ($peyments as $peyment)
                 <tr>
-                    <th>#</th>
-                    <td>#</td>
-                    <td>#</td>
+                    <th>{{ $loop->iteration }}</th>
+                    <td>{{ number_format($peyment->amount) }}</td>
+                    <td>{{ $peyment->user->mobile ? $peyment->user->mobile : $peyment->user->email }}</td>
                     <td>
-                        #
+                        @if($peyment->status == 0)
+                            در انتظار پرداخت
+                        @elseif($peyment->status == 1)
+                            پرداخت شده
+                        @else
+                            پرداخت ناموفق
+                        @endif
                     </td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>{{ \Morilog\Jalali\Jalalian::forge('')->format('%A, %d %B %y')  }}</td>
+                    <td>{{ $peyment->gateway }}</td>
+                    <td>{{ $peyment->transaction_id }}</td>
+                    <td>{{ $peyment->tracking_code }}</td>
+                    <td>{{ \Morilog\Jalali\Jalalian::forge($peyment->created_at)->format('%A, %d %B %y')  }}</td>
                 </tr>
-                
+                @endforeach
 
 
             </tbody>
         </table>
         <div>
-            #paginate
+            {{ $peyments->links() }}
         </div>
 
     </section>
