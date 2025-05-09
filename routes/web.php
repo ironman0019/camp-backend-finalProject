@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Content\BannerController;
 use App\Http\Controllers\Admin\Market\PeymentController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Home\ProductDownloadController;
+use App\Http\Controllers\Admin\Content\CommentController;
 use App\Http\Controllers\Admin\Market\ProductItemController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Market\ProductCategoryController;
@@ -79,6 +80,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::prefix('content')->name('content.')->group(function() {
         Route::resource('banner', BannerController::class);
         Route::resource('faq', FaqController::class);
+        Route::resource('comment', CommentController::class)->only(['index', 'show']);
+        Route::get('comment/approved/{comment}', [CommentController::class, 'approved'])->name('comment.approved');
     });
 
     Route::prefix('tickets')->name('tickets.')->group(function() {
