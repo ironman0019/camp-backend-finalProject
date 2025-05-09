@@ -31,7 +31,7 @@
             </a>
 
 
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.market.peyment.index') }}" class="sidebar-link">
                 <i class="fas fa-credit-card"></i>
                 <span>پرداخت ها</span>
             </a>
@@ -51,7 +51,7 @@
             <section class="sidebar-part-title">بخش محتوی</section>
 
 
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.content.faq.index') }}" class="sidebar-link">
                 <i class="fas fa-question"></i>
                 <span>سوالات متداول</span>
             </a>
