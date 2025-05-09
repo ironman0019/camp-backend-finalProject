@@ -15,7 +15,7 @@
             </p>
         </div>
         <div>
-            <a href="#" class="btn btn-success">ساخت</a>
+            <a href="{{ route('admin.market.product-category.create') }}" class="btn btn-success">ساخت</a>
         </div>
     </section>
     <section class="body-content">
@@ -31,18 +31,23 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach ($categories as $category)
                 <tr>
-                    <th>#</th>
-                    <td>#</td>
-                    <td>#</td>
+                    <th>{{ $loop->iteration }}</th>
+                    <td>{{ $category->name }}</td>
+                    <td>{{ $category->slug }}</td>
                     <td>
-                        #
+                        @if ($category->status)
+                        <span> فعال</span>
+                        @else
+                        <span>غیر فعال</span>
+                        @endif
+
                     </td>
                     <td>
                         <div class="d-flex">
                             <div class="mx-2">
-                                <form action="#" method="POST">
+                                <form action="{{ route('admin.market.product-category.destroy', $category) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -52,7 +57,7 @@
                                 </form>
                             </div>
                             <div class="mx-2">
-                                <a href="#"
+                                <a href="{{ route('admin.market.product-category.edit', $category) }}"
                                     class="text-warning">
                                     <i class="fa fa-edit"></i>
                                 </a>
@@ -60,7 +65,7 @@
                         </div>
                     </td>
                 </tr>
-                
+                @endforeach
 
 
             </tbody>
