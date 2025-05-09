@@ -9,7 +9,7 @@
 
     <p>{{ $statusMessage }}</p>
 
-    <p>Order ID: {{ $order->id }}</p>
+    <p>کد رهگیری: {{ $order->tracking_code }}</p>
     <p>ممنون از خرید شما!</p>
 </body>
 </html>
