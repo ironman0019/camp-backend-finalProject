@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\Admin\Content\BannerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Home\CartController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\OrderController;
 use App\Http\Controllers\Home\CheckoutController;
 use App\Http\Controllers\Admin\DashbordController;
+use App\Http\Controllers\Home\UserTicketController;
 use App\Http\Controllers\Admin\Market\TagController;
 use App\Http\Controllers\Home\UserProfileController;
 use App\Http\Controllers\Home\UserDashbordController;
 use App\Http\Controllers\Admin\Ticket\TicketController;
+use App\Http\Controllers\Admin\Content\BannerController;
 use App\Http\Controllers\Admin\Market\ProductController;
+use App\Http\Controllers\Home\ProductDownloadController;
 use App\Http\Controllers\Admin\Market\ProductItemController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
-use App\Http\Controllers\Home\ProductDownloadController;
-use App\Http\Controllers\Home\UserTicketController;
+use App\Http\Controllers\Admin\Market\ProductCategoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('product/{product}/{slug}', [HomeController::class, 'product'])->name('product.show');
@@ -104,6 +105,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
         Route::delete('product-items/delete/{productItem}', [ProductItemController::class, 'destroy'])->name('product-items.destroy');
         Route::get('product-items/file/download/{filePath}', [ProductItemController::class, 'downloadFile'])->where('filePath', '.*')->name('product-items.download-file');
         Route::put('product-items/rename-file-item/{productItem}', [ProductItemController::class, 'renameFile'])->name('product-items.rename-file');
+
+        // Product category
+        Route::resource('product-category', ProductCategoryController::class);
         
 
     });
