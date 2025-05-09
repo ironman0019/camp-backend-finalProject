@@ -25,7 +25,7 @@
                 <span>تگ ها</span>
             </a>
 
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.market.coupan.index') }}" class="sidebar-link">
                 <i class="fas fa-dollar-sign"></i>
                 <span>تخفیفات</span>
             </a>
