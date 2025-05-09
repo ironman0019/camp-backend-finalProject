@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Market\TagController;
 use App\Http\Controllers\Home\UserProfileController;
 use App\Http\Controllers\Admin\Content\FaqController;
 use App\Http\Controllers\Home\UserDashbordController;
+use App\Http\Controllers\Admin\Content\MenuController;
 use App\Http\Controllers\Admin\Market\CoupanController;
 use App\Http\Controllers\Admin\Ticket\TicketController;
 use App\Http\Controllers\Admin\Content\BannerController;
@@ -82,6 +83,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
         Route::resource('faq', FaqController::class);
         Route::resource('comment', CommentController::class)->only(['index', 'show']);
         Route::get('comment/approved/{comment}', [CommentController::class, 'approved'])->name('comment.approved');
+        Route::resource('menu', MenuController::class);
     });
 
     Route::prefix('tickets')->name('tickets.')->group(function() {
