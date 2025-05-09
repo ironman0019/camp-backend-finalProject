@@ -248,8 +248,8 @@
                 </span>
                 <span class="ml-3 ml-md-5 position-relative">
                     <span id="header-profile-toggle" class="pointer">
-                        <img class="header-avatar" src="{{ asset('admin-assets/assets/images/avatar-2.jpg') }}" alt="">
-                        <span class="header-username">کامران محمدی</span>
+                        <img class="header-avatar" src="{{ auth()->user()->profile_image }}" alt="">
+                        <span class="header-username">{{ auth()->user()->name }}</span>
                         <i class="fas fa-angle-down"></i>
                     </span>
                     <section id="header-profile" class="header-profile rounded">
