@@ -15,7 +15,7 @@
             </p>
         </div>
         <div>
-            <a href="#" class="btn btn-success">ساخت</a>
+            <a href="{{ route('admin.content.faq.create') }}" class="btn btn-success">ساخت</a>
         </div>
     </section>
     <section class="body-content">
@@ -31,18 +31,23 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach ($faqs as $faq)
                 <tr>
-                    <th>#</th>
-                    <td>#</td>
-                    <td>#</td>
+                    <th>{{ $loop->iteration }}</th>
+                    <td>{{ $faq->question }}</td>
+                    <td>{{ Str::limit($faq->answer, 50) }}</td>
                     <td>
-                        #
+                        @if ($faq->status)
+                        <span> فعال</span>
+                        @else
+                        <span>غیر فعال</span>
+                        @endif
+
                     </td>
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="mx-2">
-                                <form action="#" method="POST">
+                                <form action="{{ route('admin.content.faq.destroy', $faq) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -52,7 +57,7 @@
                                 </form>
                             </div>
                             <div class="mx-2">
-                                <a href="#"
+                                <a href="{{ route('admin.content.faq.edit', $faq) }}"
                                     class="text-warning">
                                     <i class="fa fa-edit"></i>
                                 </a>
@@ -60,7 +65,7 @@
                         </div>
                     </td>
                 </tr>
-                
+                @endforeach
 
 
             </tbody>

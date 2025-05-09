@@ -17,19 +17,19 @@
 
                     </div>
                     <div>
-                        <a href="#" class="btn btn-warning">بازگشت</a>
+                        <a href="{{ route('admin.content.faq.index') }}" class="btn btn-warning">بازگشت</a>
                     </div>
                 </section>
                 <section class="body-content">
 
-                    <form class="row g-3" action="#" method="post">
+                    <form class="row g-3" action="{{ route('admin.content.faq.update', $faq) }}" method="post">
                         @csrf
                         @method('PUT')
 
                         <div class="col-md-12 mb-2">
                             <label for="question" class="form-label">سوال</label>
                             <input type="text" name="question" class="form-control" id="question"
-                                value="#">
+                                value="{{ old('question', $faq->question) }}">
                             @error('question')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -38,7 +38,7 @@
                         <div class="col-md-12 mb-2">
                             <label for="answer" class="form-label">جواب</label>
                             <textarea name="answer" class="form-control" id="answer"
-                                value="">#</textarea>
+                                value="">{{ old('answer', $faq->answer) }}</textarea>
                             @error('answer')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -47,8 +47,8 @@
                         <div class="col-md-6 mb-2">
                             <label for="status" class="form-label">وضعیت</label>
                             <select class="form-control" name="status" id="status">
-                                <option value="1" selected>فعال</option>
-                                <option value="0">غیر فعال</option>
+                                <option value="1" @if (old('status', $faq->status) == 1) selected @endif>فعال</option>
+                                <option value="0" @if (old('status', $faq->status) == 0) selected @endif>غیر فعال</option>
                             </select>
                             @error('status')
                                 <small class="text-danger">{{ $message }}</small>

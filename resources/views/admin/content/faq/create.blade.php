@@ -17,12 +17,12 @@
 
                     </div>
                     <div>
-                        <a href="#" class="btn btn-warning">بازگشت</a>
+                        <a href="{{ route('admin.content.faq.index') }}" class="btn btn-warning">بازگشت</a>
                     </div>
                 </section>
                 <section class="body-content">
 
-                    <form class="row g-3" action="#" method="post">
+                    <form class="row g-3" action="{{ route('admin.content.faq.store') }}" method="post">
                         @csrf
 
                         <div class="col-md-12 mb-2">
