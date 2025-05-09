@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\Market\PeymentController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Home\ProductDownloadController;
 use App\Http\Controllers\Admin\Content\CommentController;
+use App\Http\Controllers\Admin\Setting\SettingController;
 use App\Http\Controllers\Admin\Market\ProductItemController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Market\ProductCategoryController;
@@ -75,7 +76,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::get('/sale-stats', [DashbordController::class, 'getSaleStats']);
 
     Route::prefix('setting')->name('setting.')->group(function() {
-        //TODO
+        Route::get('/', [SettingController::class, 'index'])->name('index');
+        Route::get('/create', [SettingController::class, 'create'])->name('create');
+        Route::post('/store', [SettingController::class, 'storeOrUpdate'])->name('store');
     });
 
     Route::prefix('content')->name('content.')->group(function() {
