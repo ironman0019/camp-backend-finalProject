@@ -67,7 +67,7 @@
                                                         class="nt-flex-start-center rounded-pill py-2 px-3 bg-light-subtle text-body-emphasis">
                                                         <i class="ti ti-grid-3x3 fs-5"></i>
                                                         <div class="text-body-secondary">کد سفارش</div>
-                                                        <div class="text-body-emphasis">0</div>
+                                                        <div class="text-body-emphasis">{{ $pendingOrder->tracking_code }}</div>
                                                     </div>
                                                     <div
                                                         class="nt-flex-start-center rounded-pill py-2 px-3 bg-light-subtle text-body-emphasis">
@@ -181,7 +181,7 @@
                                                         class="nt-flex-start-center rounded-pill py-2 px-3 bg-light-subtle text-body-emphasis">
                                                         <i class="ti ti-grid-3x3 fs-5"></i>
                                                         <div class="text-body-secondary">کد سفارش</div>
-                                                        <div class="text-body-emphasis">0</div>
+                                                        <div class="text-body-emphasis">{{ $paidOrder->tracking_code }}</div>
                                                     </div>
                                                     <div
                                                         class="nt-flex-start-center rounded-pill py-2 px-3 bg-light-subtle text-body-emphasis">
@@ -239,7 +239,7 @@
                                                         class="nt-flex-start-center rounded-pill py-2 px-3 bg-light-subtle text-body-emphasis">
                                                         <i class="ti ti-grid-3x3 fs-5"></i>
                                                         <div class="text-body-secondary">کد سفارش</div>
-                                                        <div class="text-body-emphasis">0</div>
+                                                        <div class="text-body-emphasis">{{ $failedOrder->tracking_code }}</div>
                                                     </div>
                                                     <div
                                                         class="nt-flex-start-center rounded-pill py-2 px-3 bg-light-subtle text-body-emphasis">

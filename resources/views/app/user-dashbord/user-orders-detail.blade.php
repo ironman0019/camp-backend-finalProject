@@ -25,7 +25,7 @@
                                 <div class="nt-flex-start-center gap-4 px-5 py-4 border-bottom">
                                     <div class="nt-flex">
                                         <div class="text-body-secondary">کد پیگیری سفارش</div>
-                                        <div class="nt-fw-bold">0</div>
+                                        <div class="nt-fw-bold">{{ $order->tracking_code }}</div>
                                     </div>
                                     <div class="nt-flex">
                                         <div class="text-body-secondary">تاریخ ثبت سفارش</div>
