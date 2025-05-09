@@ -57,7 +57,7 @@
             </a>
 
 
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('admin.content.comment.index') }}" class="sidebar-link">
                 <i class="fas fa-comment"></i>
                 <span>کامنت ها</span>
             </a>
