@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\Market\Cart;
+use Illuminate\Support\Str;
 use App\Models\Market\Order;
 use Illuminate\Http\Request;
 use App\Mail\OrderStatusChanged;
@@ -51,6 +52,7 @@ class OrderController extends Controller
                 'order_discount_amount' => $cart->total_discount_price,
                 'order_total_discount_amount' => $cart->total_price - $cart->total_discount_price,
                 'order_status' => 0,
+                'tracking_code' => 'ORD-' . strtoupper(Str::random(10))
             ]);
 
             foreach($cart->cartItems as $item) {
