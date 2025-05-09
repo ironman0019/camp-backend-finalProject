@@ -59,6 +59,7 @@
                                 </div>
                                 <div class="card-text"></div>
                             </div>
+                            @if(!$mostViewedProduct->discount_status)
                             <div class="card-footer bg-transparent border-0">
                                 <div class="nt-fw-bold" dir="ltr">
                                     <div class="nt-flex-start-center gap-1">
@@ -67,6 +68,23 @@
                                     </div>
                                 </div>
                             </div>
+                            @else
+                            <div class="card-footer bg-transparent border-0">
+                                <div class="nt-flex-between-center mb-2">
+                                    <div class="badge bg-danger text-light rounded-pill">{{ $mostViewedProduct->discount_percent }}٪</div>
+                                    <div class="nt-fw-500 text-body-tertiary nt-flex-start-center gap-1">
+                                        <div class="text-decoration-line-through">{{ number_format($mostViewedProduct->price) }}</div>
+                                        <div class="small">تومان</div>
+                                    </div>
+                                </div>
+                                <div class="nt-fw-bold" dir="ltr">
+                                    <div class="nt-flex-start-center gap-1">
+                                        <div class="small">تومان</div>
+                                        <div class="fs-5">{{ number_format($mostViewedProduct->off_price) }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                         </a>
                     </div>
                     @endforeach
