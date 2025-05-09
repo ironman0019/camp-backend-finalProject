@@ -15,11 +15,11 @@
             </p>
         </div>
         <div>
-            <a href="#" class="btn btn-success">ساخت</a>
+            <a href="{{ route('admin.setting.create') }}" class="btn btn-success">ساخت</a>
         </div>
     </section>
     <section class="body-content">
-        
+        @if($setting)
         <table class="table">
             <thead class="table-info">
                 <tr>
@@ -36,21 +36,21 @@
 
                 <tr>
                     <th>1</th>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td><img src="#" alt="logo" width="100" height="100"></td>
-                    <td><img src="#" alt="icon" width="100" height="100"></td>
-                    <td>{{ \Morilog\Jalali\Jalalian::forge('')->format('%A, %d %B %y') }}</td>
+                    <td>{{ $setting->title }}</td>
+                    <td>{{ Str::limit($setting->description, 50) }}</td>
+                    <td>{{ Str::limit($setting->keywords, 50) }}</td>
+                    <td><img src="{{ asset($setting->logo) }}" alt="logo" width="100" height="100"></td>
+                    <td><img src="{{ asset($setting->icon) }}" alt="icon" width="100" height="100"></td>
+                    <td>{{ \Morilog\Jalali\Jalalian::forge($setting->updated_at)->format('%A, %d %B %y') }}</td>
                 </tr>
                 
 
 
             </tbody>
         </table>
-        
+        @else
         <h4>تنظیمات وجود ندارد. برای ساخت کیلیک کنید.</h4>
-        
+        @endif
 
 
     </section>
