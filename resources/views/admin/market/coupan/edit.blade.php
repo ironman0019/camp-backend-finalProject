@@ -23,19 +23,19 @@
 
                 </div>
                 <div>
-                    <a href="#" class="btn btn-warning">بازگشت</a>
+                    <a href="{{ route('admin.market.coupan.index') }}" class="btn btn-warning">بازگشت</a>
                 </div>
             </section>
             <section class="body-content">
 
-                <form class="row g-3" action="#" method="post">
+                <form class="row g-3" action="{{ route('admin.market.coupan.update', $coupan) }}" method="post">
                     @csrf
                     @method('PUT')
 
                     <div class="col-md-6 mb-2">
                         <label for="code" class="form-label">کد</label>
                         <input type="text" name="code" class="form-control" id="code"
-                            value="#">
+                            value="{{ old('code', $coupan->code) }}">
                         @error('code')
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -44,7 +44,7 @@
                     <div class="col-md-6 mb-2">
                         <label for="amount" class="form-label">مقدار</label>
                         <input type="number" name="amount" class="form-control" id="amount"
-                            value="#">
+                            value="{{ old('amount', $coupan->amount) }}">
                         @error('amount')
                         <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -54,8 +54,8 @@
                     <div class="col-md-6 mb-2">
                         <label for="amount_type" class="form-label">نوع تخفیف</label>
                         <select class="form-control" name="amount_type" id="amount_type">
-                            <option value="1" selected>عددی</option>
-                            <option value="0" >درصدی</option>
+                            <option value="1" @if (old('amount_type', $coupan->amount_type)==1) selected @endif>عددی</option>
+                            <option value="0" @if (old('amount_type', $coupan->amount_type)==0) selected @endif>درصدی</option>
                         </select>
                         @error('amount_type')
                         <small class="text-danger">{{ $message }}</small>
@@ -65,9 +65,20 @@
                     <div class="col-md-6 mb-2">
                         <label for="discount_ceiling" class="form-label">سقف تخفیف (فقط در صورت درصدی بودن تخفیف)</label>
                         <input type="number" name="discount_ceiling" class="form-control" id="discount_ceiling"
-                            value="#">
+                            value="{{ old('discount_ceiling', $coupan->discount_ceiling) }}">
                         @error('discount_ceiling')
                         <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+                        <label for="status" class="form-label">وضعیت</label>
+                        <select class="form-control" name="status" id="status">
+                            <option value="1" @selected(old('status', $coupan->status) == 1)>فعال</option>
+                            <option value="0" @selected(old('status', $coupan->status) == 0)>غیر فعال</option>
+                        </select>
+                        @error('status')
+                            <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
 

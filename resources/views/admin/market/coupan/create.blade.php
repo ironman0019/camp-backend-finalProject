@@ -23,12 +23,12 @@
 
                 </div>
                 <div>
-                    <a href="#" class="btn btn-warning">بازگشت</a>
+                    <a href="{{ route('admin.market.coupan.index') }}" class="btn btn-warning">بازگشت</a>
                 </div>
             </section>
             <section class="body-content">
 
-                <form class="row g-3" action="#" method="post">
+                <form class="row g-3" action="{{ route('admin.market.coupan.store') }}" method="post">
                     @csrf
 
                     <div class="col-md-6 mb-2">
@@ -67,6 +67,17 @@
                             value="{{ old('discount_ceiling') }}">
                         @error('discount_ceiling')
                         <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+                        <label for="status" class="form-label">وضعیت</label>
+                        <select class="form-control" name="status" id="status">
+                            <option value="1" @if (old('status') == 1) selected @endif>فعال</option>
+                            <option value="0" @if (old('status') == 0) selected @endif>غیر فعال</option>
+                        </select>
+                        @error('status')
+                            <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
 

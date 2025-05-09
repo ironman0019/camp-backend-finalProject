@@ -15,7 +15,7 @@
             </p>
         </div>
         <div>
-            <a href="#" class="btn btn-success">ساخت</a>
+            <a href="{{ route('admin.market.coupan.create') }}" class="btn btn-success">ساخت</a>
         </div>
     </section>
     <section class="body-content">
@@ -30,23 +30,31 @@
                     <th scope="col">سقف تخفیف</th>
                     <th scope="col">تاریخ شروع</th>
                     <th scope="col">تاریخ پایان</th>
+                    <th scope="col">وضعیت</th>
                     <th scope="col">تنظیمات</th>
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach ($coupans as $coupan)
                 <tr>
-                    <th>#</th>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>{{ \Morilog\Jalali\Jalalian::forge('')->format('%A, %d %B %y') }}</td>
-                    <td>{{ \Morilog\Jalali\Jalalian::forge('')->format('%A, %d %B %y') }}</td>
+                    <th>{{ $loop->iteration }}</th>
+                    <td>{{ $coupan->code }}</td>
+                    <td>{{ $coupan->amount }}</td>
+                    <td>{{ $coupan->amount_type ? 'عددی' : 'درصدی' }}</td>
+                    <td>{{ $coupan->discount_ceiling ?? 'empty' }}</td>
+                    <td>{{ \Morilog\Jalali\Jalalian::forge($coupan->start_date)->format('%A, %d %B %y') }}</td>
+                    <td>{{ \Morilog\Jalali\Jalalian::forge($coupan->end_date)->format('%A, %d %B %y') }}</td>
+                    <td>
+                        @if ($coupan->status)
+                        <span> فعال</span>
+                        @else
+                        <span>غیر فعال</span>
+                        @endif
+                    </td>
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="mx-2">
-                                <form action="#" method="POST">
+                                <form action="{{ route('admin.market.coupan.destroy', $coupan) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -56,7 +64,7 @@
                                 </form>
                             </div>
                             <div class="mx-2">
-                                <a href="#"
+                                <a href="{{ route('admin.market.coupan.edit', $coupan) }}"
                                     class="text-warning">
                                     <i class="fa fa-edit"></i>
                                 </a>
@@ -64,7 +72,7 @@
                         </div>
                     </td>
                 </tr>
-                
+                @endforeach
 
 
             </tbody>
