@@ -10,6 +10,7 @@ use App\Http\Controllers\Home\UserTicketController;
 use App\Http\Controllers\Admin\Market\TagController;
 use App\Http\Controllers\Home\UserProfileController;
 use App\Http\Controllers\Home\UserDashbordController;
+use App\Http\Controllers\Admin\Market\CoupanController;
 use App\Http\Controllers\Admin\Ticket\TicketController;
 use App\Http\Controllers\Admin\Content\BannerController;
 use App\Http\Controllers\Admin\Market\ProductController;
@@ -108,6 +109,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
 
         // Product category
         Route::resource('product-category', ProductCategoryController::class);
+
+        // Coupan
+        Route::resource('coupan', CoupanController::class);
         
 
     });
