@@ -110,7 +110,7 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="#">تنظیمات اصلی</a>
+                    <a href="{{ route('admin.setting.index') }}">تنظیمات اصلی</a>
                 </section>
             </section>
 
