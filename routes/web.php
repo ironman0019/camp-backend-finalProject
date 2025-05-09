@@ -9,10 +9,12 @@ use App\Http\Controllers\Admin\DashbordController;
 use App\Http\Controllers\Home\UserTicketController;
 use App\Http\Controllers\Admin\Market\TagController;
 use App\Http\Controllers\Home\UserProfileController;
+use App\Http\Controllers\Admin\Content\FaqController;
 use App\Http\Controllers\Home\UserDashbordController;
 use App\Http\Controllers\Admin\Market\CoupanController;
 use App\Http\Controllers\Admin\Ticket\TicketController;
 use App\Http\Controllers\Admin\Content\BannerController;
+use App\Http\Controllers\Admin\Market\PeymentController;
 use App\Http\Controllers\Admin\Market\ProductController;
 use App\Http\Controllers\Home\ProductDownloadController;
 use App\Http\Controllers\Admin\Market\ProductItemController;
@@ -25,7 +27,6 @@ Route::get('search', [HomeController::class, 'search'])->name('search');
 
 
 Route::middleware(['auth'])->group(function() {
-    //TODO
 
     // user dashbord routes
     Route::get('user/dashbord/index', [UserDashbordController::class, 'index'])->name('user.dashbord.index');
@@ -76,8 +77,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     });
 
     Route::prefix('content')->name('content.')->group(function() {
-        //TODO
         Route::resource('banner', BannerController::class);
+        Route::resource('faq', FaqController::class);
     });
 
     Route::prefix('tickets')->name('tickets.')->group(function() {
@@ -112,6 +113,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
 
         // Coupan
         Route::resource('coupan', CoupanController::class);
+
+        // Peyment
+        Route::resource('peyment', PeymentController::class)->only(['index']);
         
 
     });
