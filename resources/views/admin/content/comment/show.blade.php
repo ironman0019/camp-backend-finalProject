@@ -8,7 +8,7 @@
     <section class="main-body-container-header d-flex justify-content-between align-items-center">
         <div>
             <h5>
-                پاسخ های کامنت شماره : #
+                پاسخ های کامنت شماره : {{ $comment->id }}
             </h5>
             <p>
                 در این بخش اطلاعاتی در مورد پاسخ های کامنت به شما داده می شود
@@ -29,37 +29,43 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach($comments as $comment)
                 <tr>
-                    <th>#</th>
-                    <td>#</td>
-                    <td>#</td>
+                    <th>{{ $loop->iteration }}</th>
+                    <td>{{ Str::limit($comment->body, 20) }}</td>
+                    <td>{{ $comment->user->name }}</td>
                     <td>
-                        #
+                        @if ($comment->status == 0)
+                        <span> دیده نشده</span>
+                        @elseif($comment->status == 1)
+                        <span>دیده شده</span>
+                        @else
+                        <span>تایید شده</span>
+                        @endif
                     </td>
-                    <td>{{ \Morilog\Jalali\Jalalian::forge('')->format('%A, %d %B %y') }}</td>
+                    <td>{{ \Morilog\Jalali\Jalalian::forge($comment->created_at)->format('%A, %d %B %y') }}</td>
                     <td>
                         <div class="d-flex align-items-center">
-                            {{-- if($comment->status == 0 || $comment->status == 1)
+                            @if($comment->status == 0 || $comment->status == 1)
                             <div class="mx-2">
                                 <a href="{{ route('admin.content.comment.approved', $comment) }}"
                                     class="text-success">
                                     <i class="fa fa-check"></i>
                                 </a>
                             </div>
-                            else
+                            @else
                             <div class="mx-2">
                                 <a href="{{ route('admin.content.comment.approved', $comment) }}"
                                     class="text-danger">
                                     <i class="fa fa-ban"></i>
                                 </a>
                             </div>
-                            endif --}}
+                            @endif
 
                         </div>
                     </td>
                 </tr>
-                
+                @endforeach
 
 
             </tbody>
