@@ -15,7 +15,7 @@
             </p>
         </div>
         <div>
-            <a href="#" class="btn btn-success">ساخت</a>
+            <a href="{{ route('admin.content.menu.create') }}" class="btn btn-success">ساخت</a>
         </div>
     </section>
     <section class="body-content">
@@ -31,16 +31,16 @@
                 </tr>
             </thead>
             <tbody>
-                
+                @foreach ($adminPanelMenus as $adminPanelMenu)
                 <tr>
-                    <th>#</th>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
+                    <th>{{ $loop->iteration }}</th>
+                    <td>{{ $adminPanelMenu->name }}</td>
+                    <td>{{ $adminPanelMenu->url }}</td>
+                    <td>{{ $adminPanelMenu->parent_id ? $adminPanelMenu->parent->name : 'منوی اصلی' }}</td>
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="mx-2">
-                                <form action="#" method="POST">
+                                <form action="{{ route('admin.content.menu.destroy', $adminPanelMenu) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -50,7 +50,7 @@
                                 </form>
                             </div>
                             <div class="mx-2">
-                                <a href="#"
+                                <a href="{{ route('admin.content.menu.edit', $adminPanelMenu) }}"
                                     class="text-warning">
                                     <i class="fa fa-edit"></i>
                                 </a>
@@ -58,7 +58,7 @@
                         </div>
                     </td>
                 </tr>
-                
+                @endforeach
 
 
             </tbody>
