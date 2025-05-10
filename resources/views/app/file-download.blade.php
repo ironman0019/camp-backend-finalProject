@@ -52,7 +52,7 @@
                                                 </ul>
                                                 
                                                 <div class="card-footer bg-transparent border-0">
-                                                    <a href="{{ URL::signedRoute('download-file', ['product', $product->id, $order]) }}" class="btn btn-primary w-100">
+                                                    <a href="{{ URL::temporarySignedRoute('download-file', now()->addMinutes(1), ['product', $product->id, $order]) }}" class="btn btn-primary w-100">
                                                         دانلود
                                                     </a>
                                                 </div>
