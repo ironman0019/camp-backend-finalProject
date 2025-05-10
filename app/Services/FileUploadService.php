@@ -32,7 +32,8 @@ class FileUploadService
             'path' => $fullPath,
             'type' => $file->getClientMimeType(),
             'name' => $fileName,
-            'original_name' => $file->getClientOriginalName()
+            'original_name' => $file->getClientOriginalName(),
+            'size' => $file->getSize()
         ];
     }
 
