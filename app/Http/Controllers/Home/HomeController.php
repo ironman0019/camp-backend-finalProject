@@ -57,5 +57,35 @@ class HomeController extends Controller
         return back()->with('success', 'محصول به علاقه مندی اضافه شد');
     }
 
+
+    public function createComment(Request $request, Product $product, ?Comment $comment = null)
+    {
+        $inputs = $request->validate([
+            'body' => 'required|string|min:2|max:255'
+        ]);
+
+        $user = Auth::user();
+
+        if (!$comment) {
+            Comment::create([
+                'body' => $inputs['body'],
+                'user_id' => $user->id,
+                'product_id' => $product->id,
+            ]);
+        }
+        else
+        {
+            Comment::create([
+                'body' => $inputs['body'],
+                'user_id' => $user->id,
+                'product_id' => $product->id,
+                'parent_id' => $comment->id
+            ]);
+        }
+
+
+        return back()->with('success', 'کامنت ساخته و پس از تایید نمایش داده میشود');
+    }
+
     
 }
