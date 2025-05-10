@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Ticket;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Ticket\StoreTicketRequest;
 use App\Models\Ticket\Ticket;
+use App\Models\Ticket\TicketFile;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Admin\Ticket\StoreTicketRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class TicketController extends Controller
@@ -68,4 +70,17 @@ class TicketController extends Controller
         $ticket->save();
         return to_route('admin.tickets.ticket.index')->with('swal-success', 'وضعیت تیکت با موفقیت تغییر کرد');
     }
+
+    // Download file 
+    public function downloadFile(TicketFile $ticketFile)
+    {
+        $filePath = $ticketFile->file_path;
+        if (!Storage::exists($filePath)) {
+            return 'file not found';
+        }
+
+        return Storage::download($filePath);
+    }
+
+
 }
