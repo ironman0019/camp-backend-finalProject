@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function() {
     Route::delete('user/dashbord/remove-from-favourite/{product}', [UserDashbordController::class, 'removeFromFavourite'])->name('user.dashbord.remove-from-favourite');
     Route::get('user/dashbord/user-ticket', [UserTicketController::class, 'index'])->name('user.dashbord.ticket.index');
     Route::post('user/dashbord/user-ticket', [UserTicketController::class, 'store'])->name('user.dashbord.ticket.store');
+    Route::get('user/dashbord/ticket-download/{ticketFile}', [UserTicketController::class, 'downloadFile'])->name('user.dashbord.ticket.download');
     Route::get('user/profile/edit/{id}', [UserProfileController::class, 'edit'])->name('user.profile.edit');
     Route::put('user/profile/update/{user}', [UserProfileController::class, 'update'])->name('user.profile.update');
 
