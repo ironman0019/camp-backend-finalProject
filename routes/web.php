@@ -63,6 +63,9 @@ Route::middleware(['auth'])->group(function() {
     // add to favourite route
     Route::get('add_to_favourite', [HomeController::class, 'addToFavourite'])->name('product.add-to-favourite');
 
+    // create comment route
+    Route::post('/comment/create/{product}/{comment?}', [HomeController::class, 'createComment'])->name('comment.create');
+
 });
 
 
