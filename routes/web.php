@@ -99,6 +99,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
         // Tickets
         Route::resource('ticket', TicketController::class);
         Route::get('ticket/status/{ticket}', [TicketController::class, 'status'])->name('ticket.status');
+        Route::get('ticket/download-file/{ticketFile}', [TicketController::class, 'downloadFile'])->name('ticket.download');
 
     });
 
