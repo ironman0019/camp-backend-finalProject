@@ -74,7 +74,7 @@
                     </td>
                     <td>
                         @if($ticket->file)
-                            <a href="#"><i class="fa fa-download"></i></a>
+                            <a href="{{ route('admin.tickets.ticket.download', $ticket->file) }}"><i class="fa fa-download"></i></a>
                         @endif
                     </td>
                 </tr>
