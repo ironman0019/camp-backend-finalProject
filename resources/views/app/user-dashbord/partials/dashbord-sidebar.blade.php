@@ -22,12 +22,12 @@
                     <div class="nt-flex-column py-1">
                         <div class="text-body-emphasis nt-flex nt-fw-500 mb-2"><i
                                 class="ti ti-wallet fs-4 text-primary"></i>کیف پول</div><a
-                            class="icon-link icon-link-hover small" href="#">افزایش موجودی<i
+                            class="icon-link icon-link-hover small" href="{{ route('wallet.increase.form') }}">افزایش موجودی<i
                                 class="ti ti-chevron-left bi"></i></a>
                     </div>
                     <div class="nt-flex">
                         <div class="text-body-emphasis nt-flex-start-center py-1">
-                            <div class="nt-fw-500">۰</div>
+                            <div class="nt-fw-500">{{ number_format(auth()->user()->wallet->amount) }}</div>
                             <div class="small">تومان</div>
                         </div>
                     </div>
