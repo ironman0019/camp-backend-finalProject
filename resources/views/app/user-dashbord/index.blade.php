@@ -14,6 +14,12 @@
                 <div class="row g-4 py-5">
                     @include('app.user-dashbord.partials.dashbord-sidebar')
                     <div class="col-12 col-md-9 nt-flex-column gap-3">
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+                         @if(session('error'))
+                            <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
                         <!-- summary-->
                         <div class="w-100 bg-body border rounded p-5">
                             <!-- header-->
