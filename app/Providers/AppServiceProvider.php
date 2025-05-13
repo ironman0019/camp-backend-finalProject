@@ -63,8 +63,6 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-        
-        // auth()->loginUsingId(1);
-        // Model::preventsLazyLoading();
+        Model::preventsLazyLoading();
     }
 }
