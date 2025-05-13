@@ -11,12 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    // public function showCart()
-    // {
-    //     $user = Auth::user();
-    //     $cart = Cart::where('user_id', $user->id)->where('status', 0)->with('cartItems.product')->first();
-    //     return view('app.cart', compact('cart'));
-    // }
 
     public function addToCart($id)
     {
