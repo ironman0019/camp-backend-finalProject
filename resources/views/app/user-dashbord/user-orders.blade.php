@@ -12,6 +12,12 @@
                 <div class="row g-4">
                     @include('app.user-dashbord.partials.dashbord-sidebar')
                     <div class="col-12 col-md-9">
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+                         @if(session('error'))
+                            <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
                         <!-- content-->
                         <div class="border rounded bg-body">
                             <!-- heading-->
@@ -148,9 +154,12 @@
 
                                         </div>
                                         <div class="card-footer bg-transparent border-0">
-                                            <a href="#" class="btn btn-primary w-100">
-                                                پرداخت سفارش
-                                            </a>
+                                            <form action="{{ route('peyment.store', $pendingOrder) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary w-100">
+                                                    پرداخت سفارش
+                                                </button>
+                                            </form>
                                         </div>
                                         @endforeach
                                     </div>
