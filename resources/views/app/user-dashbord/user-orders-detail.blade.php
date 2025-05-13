@@ -77,9 +77,12 @@
                                                     class="ti ti-circle-check-filled fs-5 text-success"></i>
                                                 <div class="text-body-secondary">مبلغ سفارش - پرداخت موفق</div>
                                             </div>
+                                            @if($order->peyment_type == 0)
                                             <div class="nt-flex-start-center gap-4">
                                                 <div class="nt-fw-500">{{ \Morilog\Jalali\Jalalian::forge($order->peyment->created_at)->format('%A, %d %B %y') }}</div>
                                                 <div class="nt-fw-500">{{ $order->peyment->amount }} تومان</div>
+                                            </div>
+                                            @endif
                                             </div>
                                         </div>
                                     </div>
