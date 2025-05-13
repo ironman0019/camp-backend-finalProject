@@ -56,8 +56,10 @@ class SmsService {
         switch ($orderStatus) {
             case 0:
                 $text =  'سفارش شما ثبت و در انتظار پرداخت است';
-            case 1:
+            case 2:
                 $text =  'سفارش شما پرداخت و تکمیل شد به داشبورد کاربری خود مراجعه کنید.';
+            case 3:
+                $text =  'سفارش شما لغو شد.';
             default:
                 $text =  '';
         }
