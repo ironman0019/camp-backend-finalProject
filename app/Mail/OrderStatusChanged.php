@@ -32,8 +32,10 @@ class OrderStatusChanged extends Mailable implements ShouldQueue
         switch ($status) {
             case 0:
                 return 'سفارش شما ثبت و در انتظار پرداخت است';
-            case 1:
+            case 2:
                 return 'سفارش شما پرداخت و تکمیل شد به داشبورد کاربری خود مراجعه کنید.';
+            case 3:
+                return 'سفارش شما لغو شد.';
             default:
                 return '';
         }
