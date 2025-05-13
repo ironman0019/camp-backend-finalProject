@@ -23,6 +23,8 @@ use App\Http\Controllers\Admin\Setting\SettingController;
 use App\Http\Controllers\Admin\Market\ProductItemController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Market\ProductCategoryController;
+use App\Http\Controllers\Home\PeymentController as HomePeymentController;
+use App\Http\Controllers\Home\UserWalletController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('product/{product}/{slug}', [HomeController::class, 'product'])->name('product.show');
@@ -44,13 +46,14 @@ Route::middleware(['auth'])->group(function() {
     Route::get('user/dashbord/ticket-download/{ticketFile}', [UserTicketController::class, 'downloadFile'])->name('user.dashbord.ticket.download');
     Route::get('user/profile/edit/{id}', [UserProfileController::class, 'edit'])->name('user.profile.edit');
     Route::put('user/profile/update/{user}', [UserProfileController::class, 'update'])->name('user.profile.update');
+    Route::get('user/wallet/increase', [UserWalletController::class, 'create'])->name('wallet.increase.form');
+    Route::post('user/wallet/increase', [UserWalletController::class, 'store'])->name('wallet.increase.store');
 
     // file download routes
     Route::get('download-file/index/{product}/{order}', [ProductDownloadController::class, 'index'])->name('download-file.index');
     Route::get('download-file/{type}/{id}/{order}', [ProductDownloadController::class, 'download'])->name('download-file')->middleware('signed');
 
     // cart routes
-    // Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
     Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
     Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
@@ -60,6 +63,9 @@ Route::middleware(['auth'])->group(function() {
 
     // order routes
     Route::post('order/store', [OrderController::class, 'orderStore'])->name('order.store');
+
+    // peyment routes
+    Route::post('peyment/confirm/{order}', [HomePeymentController::class, 'confirmPeyment'])->name('peyment.store');
 
     // add to favourite route
     Route::get('add_to_favourite', [HomeController::class, 'addToFavourite'])->name('product.add-to-favourite');
