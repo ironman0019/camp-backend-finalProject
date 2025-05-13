@@ -69,18 +69,9 @@ class OrderController extends Controller
             $cart->update(['status' => 1]);
             DB::commit();
 
-            // if($user->email) {
-            //     Mail::to($user->email)->send(new OrderStatusChanged($order));
-            // }
-            // else
-            // {
-            //     $smsService->SendOtpSms($user->mobile, $order->order_status);
-            // }
-
-            // elegent way?
             event(new OrderStatusUpdated($order));
 
-            return to_route('home')->with('success', 'سفارش شما ثبت شد');
+            return to_route('home')->with('success', 'سفارش شما ثبت به داشبورد کاربری مراجعه کنید');
 
         } catch (\Exception $e) {
             DB::rollBack();
