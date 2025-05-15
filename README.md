@@ -15,7 +15,7 @@ This is a Laravel-based web application designed to sell digital products relate
 ## 🛠️ Tech Stack
 
 - **Laravel** (Latest version)  
-- **MySQL / MariaDB**  
+- **MySQL / SQLite**  
 - **Bootstrap** (or custom CSS)  
 - **OTP** via Laravel Notification System  
 - **Email** via Laravel Mail  
