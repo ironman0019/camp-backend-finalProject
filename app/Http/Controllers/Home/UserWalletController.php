@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Market\Peyment;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\User\Wallet;
 use App\Models\User\WalletPeyment;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,7 @@ class UserWalletController extends Controller
 {
     public function create()
     {
-        return view('app.user-dashbord.user-wallet-form');
+        return view('app.user-dashbord.user-wallet.user-wallet-form');
     }
 
     public function store(Request $request)
@@ -48,12 +49,11 @@ class UserWalletController extends Controller
                 'peyment_id' => $peyment->id,
                 'peyment_object' => json_encode($peyment),
                 'charge_amount' => $peyment->amount,
-                'peyment_status' => 1,
-                'tracking_code' => 'WAL-' . strtoupper(Str::random(10))
+                'peyment_status' => 1
             ]);
 
             $wallet->update([
-                'amount' => $walletPeyment->charge_amount
+                'amount' => $wallet->amount + $walletPeyment->charge_amount
             ]);
 
             DB::commit();
@@ -65,6 +65,13 @@ class UserWalletController extends Controller
         }
 
 
+    }
+
+    public function walletHistory()
+    {
+        $wallet = Auth::user()->wallet;
+        $transactions = WalletPeyment::where('wallet_id', $wallet->id)->paginate(10);
+        return view('app.user-dashbord.user-wallet.user-wallet-history', compact('transactions'));
     }
 
 
