@@ -205,7 +205,7 @@
                                                         روز تضمین بازگشت کالا</li>
                                                 </ul>
                                                 <div class="cart-item-price">
-                                                    <div class="cart-item-priceTag">{{ number_format($orderItem->product->price) }}</div>
+                                                    <div class="cart-item-priceTag">{{ number_format(json_decode($orderItem->product_object)->price) }}</div>
                                                     <div class="cart-item-priceToman">تومان</div>
                                                 </div>
                                                 @if($order->order_status == 2 && $order->peyment_status == 1)
