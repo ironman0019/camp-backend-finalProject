@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function() {
     // checkout routes
     Route::get('checkout', [CheckoutController::class, 'show'])->name('checkout');
     Route::post('checkout/apply-discount', [CheckoutController::class, 'applyDiscount'])->name('checkout.apply-discount');
+    Route::post('checkout/remove-discount/{cart}', [CheckoutController::class, 'removeDiscount'])->name('checkout.remove-discount');
 
     // order routes
     Route::post('order/store', [OrderController::class, 'orderStore'])->name('order.store');
