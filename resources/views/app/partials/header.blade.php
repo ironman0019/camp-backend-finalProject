@@ -64,7 +64,7 @@
         <button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-0">
-        @if(auth()->check() && $cart)
+        @if(auth()->check() && $cart && $cart->total_price != 0)
         <!-- content-->
         <div class="container-fluid bg-light-subtle">
             <ul class="row p-0 px-2 row-cols-1 g-3 cart">
