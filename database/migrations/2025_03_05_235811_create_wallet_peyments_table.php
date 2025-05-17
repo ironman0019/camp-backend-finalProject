@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('peyment_object')->nullable();
             $table->unsignedBigInteger('charge_amount');
             $table->tinyInteger('peyment_status')->default(0)->comment('0 => pending, 1 => ok, 2 => failed');
-            $table->text('tracking_code')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
