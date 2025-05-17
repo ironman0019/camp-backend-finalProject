@@ -18,7 +18,7 @@ class UserTicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::with('file')->where('user_id', Auth::user()->id)->get();
+        $tickets = Ticket::with('file', 'children')->where('user_id', Auth::user()->id)->whereNull('parent_id')->get(); 
         $ticketCategories = TicketCategory::all();
         return view('app.user-dashbord.user-tickets', compact('tickets', 'ticketCategories'));
     }
