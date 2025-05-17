@@ -96,7 +96,7 @@
                                     <input type="radio" class="btn-check" name="peyment_type" value="2" id="plan2" autocomplete="off">
                                     <label class="radio-card" for="plan2">
                                       <h5 class="mb-1">کیف پول کاربر</h5>
-                                      <p class="mb-0 text-muted">موجودی: {{ auth()->user()->wallet->amount }}</p>
+                                      <p class="mb-0 text-muted">موجودی: {{ number_format(auth()->user()->wallet->amount) }}</p>
                                     </label>
                                   </div>
 
