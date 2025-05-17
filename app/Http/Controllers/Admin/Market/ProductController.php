@@ -159,7 +159,7 @@ class ProductController extends Controller
             'discount_percent' => 'required|numeric|min:1|max:99'
         ]);
 
-        $off_price = ($product->price * $inputs['discount_percent']) / 100;
+        $off_price = $product->price - ($product->price * $inputs['discount_percent']) / 100;
         $product->update([
             'discount_percent' => $inputs['discount_percent'],
             'off_price' => $off_price
