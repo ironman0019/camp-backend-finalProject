@@ -54,6 +54,14 @@
                             @if($cart->discount_status)
                                 <section class="alert alert-success">
                                     <p>کد تخفیف اعمال شد - {{ $cart->coupan->code }}</p>
+                                    <div class="d-flex">
+                                        <form action="{{ route('checkout.remove-discount', $cart) }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">
+                                                حذف
+                                            </button>
+                                        </form>
+                                    </div>
                                 </section>
                             @else
                                 <div class="alert alert-primary d-flex align-items-center p-2">
