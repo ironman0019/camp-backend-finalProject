@@ -10,6 +10,7 @@ use App\Events\OrderStatusUpdated;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\User\Wallet;
+use App\Models\User\WalletPeyment;
 
 class PeymentController extends Controller
 {
@@ -67,6 +68,13 @@ class PeymentController extends Controller
 
             $wallet->update([
                 'amount' => $wallet->amount - $order->order_total_discount_amount
+            ]);
+
+            $walletPeyment = WalletPeyment::create([
+                'wallet_id' => $wallet->id,
+                'withdraw_amount' => $order->order_total_discount_amount,
+                'peyment_status' => 1,
+                'status' => 1
             ]);
 
             $order->update([
