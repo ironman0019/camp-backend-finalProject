@@ -17,13 +17,6 @@ class CartController extends Controller
         $product = Product::findOrFail($id);
         $user = Auth::user();
 
-        $cart = Cart::firstOrCreate(
-            ['user_id' => $user->id, 'status' => 0], 
-            ['total_price' => 0, 'total_discount_price' => 0, 'expired_at' => now()->addDays(7)]
-        );
-
-        $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $product->id)->first();
-
         $hasPurchased = $user->orders()
             ->whereHas('orderItems', function ($query) use ($product) {
             $query->where('product_id', $product->id);
@@ -34,6 +27,12 @@ class CartController extends Controller
             return back()->with('error', 'این محصول قبلا خریداری شده به داشبورد کاربری مراجعه کنید');
         }
 
+        $cart = Cart::firstOrCreate(
+            ['user_id' => $user->id, 'status' => 0], 
+            ['total_price' => 0, 'total_discount_price' => 0, 'expired_at' => now()->addDays(7)]
+        );
+
+        $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $product->id)->first();
 
         if ($cartItem) {
 
