@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Market\Order;
 use App\Models\Market\Product;
 use App\Models\Ticket\Ticket;
 use App\Models\Ticket\TicketAdmin;
@@ -77,6 +78,11 @@ class User extends Authenticatable
     public function favouriteProducts(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'favourite_products');
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 
 }
