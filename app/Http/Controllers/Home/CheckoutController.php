@@ -41,6 +41,10 @@ class CheckoutController extends Controller
             return back()->with('error', 'کد نامعتبر است');
         }
 
+        if($coupan->amount_type == 1 && $coupan->amount > $cart->total_price) {
+            return back()->with('error', 'مقدار کد تخفیف از مجموع سبد خرید بیشتر است!');
+        }
+
         $discountAmount = $coupan->amount_type == 0 ? min(($cart->total_price * $coupan->amount / 100), $coupan->discount_ceiling) : min($coupan->amount, $cart->total_price);
 
         $cart->update([
@@ -51,6 +55,22 @@ class CheckoutController extends Controller
 
         return back()->with('success', 'کد تخفیف با موفقیت اعمال شد');
 
+    }
+
+    public function removeDiscount(Cart $cart)
+    {
+        if($cart->discount_status) {
+
+            $cart->update([
+                'coupan_id' => null,
+                'discount_status' => 0,
+                'total_discount_price' => 0
+            ]);
+            return back()->with('success', 'کد تخفیف از سبد خرید حذف شد');
+
+        } else {
+            return to_route('home');
+        }
     }
 
 
