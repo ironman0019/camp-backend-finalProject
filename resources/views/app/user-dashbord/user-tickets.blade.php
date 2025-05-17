@@ -111,9 +111,25 @@
                                         @endif
                                     </div>
                                 </div>
+                                @if($ticket->children)
+                                @foreach ($ticket->children as $ticketAnswer)
+                                    <section>
+                                        <div class="nt-flex-between-center gap-3 py-4">
+                                            <div class="nt-fw-500 fs-5">پاسخ:</div>
+                                        </div>
+                                        <div class="border-bottom py-4">
+                                            <div class="">
+                                                <p>
+                                                {{ $ticketAnswer->body }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                @endforeach
+                                @endif
                             </section>
                             @empty
-                              <p class="fw-bold text-center">تیکتی وجود ندارد</p>
+                              <p class="fw-bold text-center">تیکتی وجود ندارد</p> 
                             @endforelse
                         </div>
                     </div>
