@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('user/profile/edit/{id}', [UserProfileController::class, 'edit'])->name('user.profile.edit');
     Route::put('user/profile/update/{user}', [UserProfileController::class, 'update'])->name('user.profile.update');
     Route::get('user/wallet/increase', [UserWalletController::class, 'create'])->name('wallet.increase.form');
+    Route::get('user/wallet/history', [UserWalletController::class, 'walletHistory'])->name('wallet.history');
     Route::post('user/wallet/increase', [UserWalletController::class, 'store'])->name('wallet.increase.store');
 
     // file download routes
