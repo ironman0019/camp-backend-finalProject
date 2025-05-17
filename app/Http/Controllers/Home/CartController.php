@@ -24,6 +24,16 @@ class CartController extends Controller
 
         $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $product->id)->first();
 
+        $hasPurchased = $user->orders()
+            ->whereHas('orderItems', function ($query) use ($product) {
+            $query->where('product_id', $product->id);
+        })
+        ->exists();
+
+        if ($hasPurchased) {
+            return back()->with('error', 'این محصول قبلا خریداری شده به داشبورد کاربری مراجعه کنید');
+        }
+
 
         if ($cartItem) {
 
