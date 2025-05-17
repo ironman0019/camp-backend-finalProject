@@ -57,7 +57,12 @@
                     </div>
                     <hr>
                     <div class="text-end mb-3">
-                        <strong>{{ number_format($product->price) }} <small>تومان</small></strong>
+                        <div class="d-flex justify-content-between">
+                            <strong>{{ $product->discount_status ? number_format($product->off_price) : number_format($product->price)  }} <small>تومان</small></strong>
+                            <p class="text-danger">
+                                {{ $product->discount_status ? $product->discount_percent . '% تخفیف' : '' }}
+                            </p>
+                        </div>
                     </div>
                     <form action="{{ route('cart.add', $product->id) }}" method="POST">
                         @csrf
