@@ -20,8 +20,8 @@
                 <!-- wallet-->
                 <li class="list-group-item nt-flex-between-start">
                     <div class="nt-flex-column py-1">
-                        <div class="text-body-emphasis nt-flex nt-fw-500 mb-2"><i
-                                class="ti ti-wallet fs-4 text-primary"></i>کیف پول</div><a
+                        <a class="text-body-emphasis nt-flex nt-fw-500 mb-2" href="{{ route('wallet.history') }}"><i
+                                class="ti ti-wallet fs-4 text-primary"></i>کیف پول</a><a
                             class="icon-link icon-link-hover small" href="{{ route('wallet.increase.form') }}">افزایش موجودی<i
                                 class="ti ti-chevron-left bi"></i></a>
                     </div>
