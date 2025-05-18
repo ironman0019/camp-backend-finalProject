@@ -99,7 +99,12 @@
                             @forelse($tickets as $ticket)
                             <section>
                                 <div class="nt-flex-between-center gap-3 py-4">
-                                    <div class="nt-fw-500 fs-5">{{ $ticket->subject }}</div>
+                                    <div class="nt-fw-500 fs-5">
+                                        {{ $ticket->subject }} 
+                                        @if ($ticket->status->value)
+                                            <span class="text-danger">بسته شده</span>                                       
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="border-top py-4">
                                     <div class="">
