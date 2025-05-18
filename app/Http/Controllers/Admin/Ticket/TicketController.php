@@ -38,8 +38,7 @@ class TicketController extends Controller
                 'parent_id'    => $ticket->id
             ]);
 
-        // Initial reference id for main ticket
-        $ticket->update(['reference_id' => auth()->user()->admin->id]);
+
 
         // Redirect
         return to_route('admin.tickets.ticket.index')->with('swal-success', 'پاسخ تیکت با موفقیت ثبت شد');
