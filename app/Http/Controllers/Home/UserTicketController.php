@@ -7,6 +7,7 @@ use App\Models\Ticket\Ticket;
 use App\Models\Ticket\TicketFile;
 use App\Services\FileUploadService;
 use App\Http\Controllers\Controller;
+use App\Models\Ticket\TicketAdmin;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Ticket\TicketCategory;
 use Illuminate\Support\Facades\Storage;
@@ -37,9 +38,14 @@ class UserTicketController extends Controller
         ]);
 
         $user = Auth::user();
+        $ticketAdmin = TicketAdmin::where('ticket_category_id', $inputs['category_id'])->inRandomOrder()->first();
+
+        if(!$ticketAdmin) {
+            return back()->with('error', 'ادمینی برای پاسخ وجود ندارد با پشتیبانی سایت تماس بگیرید');
+        }
 
         $ticket = Ticket::create([
-            'reference_id' => 1,
+            'reference_id' => $ticketAdmin->id,
             'user_id' => $user->id,
             'category_id' => $inputs['category_id'],
             'subject' => $inputs['subject'],
