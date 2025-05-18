@@ -23,6 +23,8 @@ use App\Http\Controllers\Admin\Setting\SettingController;
 use App\Http\Controllers\Admin\Market\ProductItemController;
 use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Market\ProductCategoryController;
+use App\Http\Controllers\Admin\User\TicketAdminController;
+use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Home\PeymentController as HomePeymentController;
 use App\Http\Controllers\Home\UserWalletController;
 
@@ -139,6 +141,14 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
         Route::resource('peyment', PeymentController::class)->only(['index']);
         
 
+    });
+
+    Route::prefix('user')->name('user.')->group(function() {
+        Route::resource('users', UserController::class)->except(['create', 'store']);
+        Route::get('user/admin-status/{user}', [UserController::class, 'adminStatus'])->name('user.adminStatus');
+        Route::resource('ticket-admin', TicketAdminController::class);
+
+            
     });
 
 
