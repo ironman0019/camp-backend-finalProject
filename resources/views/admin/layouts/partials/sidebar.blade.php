@@ -73,18 +73,6 @@
             </a>
 
 
-            <section class="sidebar-group-link">
-                <section class="sidebar-dropdown-toggle">
-                    <i class="fas fa-chart-bar icon"></i>
-                    <span>نوشته ها</span>
-                    <i class="fas fa-angle-left angle"></i>
-                </section>
-                <section class="sidebar-dropdown">
-                    <a href="#">مقالات</a>
-                    <a href="#">پست ها</a>
-                    <a href="#">دوره ها</a>
-                </section>
-            </section>
 
             <section class="sidebar-part-title">بخش کاربران</section>
 
@@ -95,9 +83,8 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="#">ادمین</a>
-                    <a href="#">مدرس ها</a>
-                    <a href="#">دانشجو </a>
+                    <a href="{{ route('admin.user.users.index') }}">کاربران</a>
+                    <a href="{{ route('admin.user.ticket-admin.index') }}">تیکت ادمین ها</a>
                 </section>
             </section>
 
