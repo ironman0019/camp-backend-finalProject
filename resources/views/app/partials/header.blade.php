@@ -20,7 +20,7 @@
             <!-- item-->
             @foreach ($menus as $menu)
             <li class="w-100">
-                <a class="nt-flex-start-center text-body-emphasis py-2 px-3" href="{{ $menu->url }}">
+                <a class="nt-flex-start-center text-body-emphasis py-2 px-3" href="{{ url($menu->url) }}">
                     {{ $menu->name }}
                 </a>
             </li>
@@ -213,6 +213,14 @@
                             </div>
                         </a>
                         @endif
+
+                        <!-- panel admin -->
+                        @if(auth()->user()->is_admin)
+                        <a href="{{ route('admin.home') }}" class="btn btn-primary btn-sm">
+                            پنل ادمین
+                        </a>
+                        @endif
+
                         <!-- cart (desktop)-->
                         <button class="btn btn-lg btn-secondary header-cart d-none d-lg-flex" type="button"
                             data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
