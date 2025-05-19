@@ -34,8 +34,8 @@
                 @foreach ($faqs as $faq)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    <td>{{ $faq->question }}</td>
-                    <td>{{ Str::limit($faq->answer, 50) }}</td>
+                    <td>{{ Str::limit($faq->question, 30) }}</td>
+                    <td>{{ Str::limit($faq->answer, 30) }}</td>
                     <td>
                         @if ($faq->status)
                         <span> فعال</span>
