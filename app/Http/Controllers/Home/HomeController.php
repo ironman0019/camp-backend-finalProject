@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Market\Product;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Faq;
 use App\Models\Market\Order;
 use Illuminate\Support\Facades\Auth;
 
@@ -85,6 +86,12 @@ class HomeController extends Controller
 
 
         return back()->with('success', 'کامنت ساخته و پس از تایید نمایش داده میشود');
+    }
+
+    public function faq()
+    {
+        $faqs = Faq::where('status', 1)->get();
+        return view('app.faq', compact('faqs'));
     }
 
     
