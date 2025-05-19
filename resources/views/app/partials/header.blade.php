@@ -215,7 +215,7 @@
                         @endif
 
                         <!-- panel admin -->
-                        @if(auth()->user()->is_admin)
+                        @if(auth()->check() && auth()->user()->is_admin)
                         <a href="{{ route('admin.home') }}" class="btn btn-primary btn-sm">
                             پنل ادمین
                         </a>
